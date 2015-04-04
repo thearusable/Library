@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
-  devise_for :users, :path_names => { :sign_up => "register"}
+  devise_for :readers
+  devise_for :librarians
   resources :categories
 
   root 'categories#index'

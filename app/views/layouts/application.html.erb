@@ -7,14 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="alert"><%= alert %></p>
-
-<% if user_signed_in? %>
-	Zalogowany jako: <%= current_user.email %>. <%= link_to('Wyloguj', destroy_user_session_path, :method => :delete) %> 
+<% if librarian_signed_in? %>
+	Zalogowany jako: <%= current_librarian.email %>. <%= link_to('Wyloguj', destroy_librarian_session_path, :method => :delete) %> 
 <% else %>	
-	<%= link_to('Zaloguj się', user_session_path) %>  lub <%= link_to('Zarejestruj się', new_user_registration_path) %> 
+	<%= link_to('Zaloguj się', librarian_session_path) %>  lub <%= link_to('Zarejestruj się', new_librarian_registration_path) %> 
 <% end %>
-
 <%= yield %>
 
 </body>
