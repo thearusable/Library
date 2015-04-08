@@ -5,26 +5,6 @@ ruby '2.1.5'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 
-gem 'puma', '2.11.1'
-#gem 'activeadmin'
-
-group :development, :test do
-	gem 'sqlite3'
-end	
-
-group :production do
-	gem 'pg', '0.18.1'
-	gem 'rails_12factor' , '0.0.3'
-	gem 'therubyracer-heroku', :platform => :ruby
-end
-
-
-gem 'devise' , '3.4.1'
-#gem 'omniauth', '1.2.2'
-#gem 'omniauth-twitter', '1.1.0'
-#gem 'omniauth-facebook', '2.0.1'
-#gem 'omniauth-linkedin', '0.2.0'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.1'
 # Use Uglifier as compressor for JavaScript assets
@@ -52,4 +32,29 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2015.2' , platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'rails_admin'
+gem 'puma', '2.11.1'
+
+
+
+group :development, :test do
+	gem 'sqlite3'
+end	
+
+group :production do
+	gem 'pg', '0.18.1'
+	gem 'rails_12factor' , '0.0.3'
+	gem 'therubyracer-heroku', :platform => :ruby
+end
+
+
+gem 'devise' , '3.4.1'
+#gem 'protected_attributes'
+#gem 'omniauth', '1.2.2'
+#gem 'omniauth-twitter', '1.1.0'
+#gem 'omniauth-facebook', '2.0.1'
+#gem 'omniauth-linkedin', '0.2.0'
+
+#gem 'rails_admin'
+gem 'foundation'
+
+gem 'activeadmin', github: 'gregbell/active_admin'
