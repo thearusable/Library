@@ -1,56 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+ 
   devise_for :users
-  resources :categories
-
-  get '/about' => 'welcome#about'
-  root 'welcome#home'
-
-  #devise_for :users, :skip => :registrations
-  #devise_for :admins, :librarians, :readers, :skip => :sessions
-
-  # routes for all users
-#authenticated :user do
-#end
-
-# routes only for users
-#authenticated :librarian, lambda {|u| u.type == "Librarian"} do
-#end
-
-# routes only for companies
-#authenticated :reader, lambda {|u| u.type == "Reader"} do
-#end
-
-  #devise_for :users, :controllers => {:sessions => 'sessions'}, :skip => :registrations 
-  #devise_for :admins, :librarians, :readers, :skip => :sessions
-  #devise_for :users, skip: [:registrations]
-  #devise_for :admins, skip: [:sessions,:registrations]
-  #devise_for :librarians, skip: [:sessions,:registrations]
-  #devise_for :readers
-
-  #devise_for :users do
-  #  delete 'logout', to: 'sessions#destroy', as: :destroy_user_session
-    #get 'login', to: 'sessions#new', as: :new_user_session
-    #put 'login', to: 'sessions#create', as: :user_session
-  #end
-
-  #namespace :admin do
-    #root :to => "rails_admin"
-  #  resources :profile, only: [:edit, :update]
-  #end
-  #namespace :librarian do
-    #root :to => '/manage'
-  #  resources :profile, only: [:edit, :update]
-  #end
-  #namespace :reader do
-    #root :to => 'categories#index'
-  #  resources :profile, only: [:edit, :update]
-  #end
-
-
-  
-
+  ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,12 +1,14 @@
-class DeviseCreateAdminUsers < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration
   def migrate(direction)
     super
     # Create a default user
-    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if direction == :up
+    User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true, librarian: true) if direction == :up
+    User.create!(email: 'librarian@example.com', password: 'password', password_confirmation: 'password', admin: false, librarian: true) if direction == :up
+    User.create!(email: 'reader@example.com', password: 'password', password_confirmation: 'password', admin: false, librarian: false) if direction == :up
   end
 
   def change
-    create_table(:admin_users) do |t|
+    create_table(:users) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -36,13 +38,16 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      ## Nasze
+      t.boolean :admin,       default: false
+      t.boolean :librarian,   default: false
 
       t.timestamps
     end
 
-    add_index :admin_users, :email,                unique: true
-    add_index :admin_users, :reset_password_token, unique: true
-    # add_index :admin_users, :confirmation_token,   unique: true
-    # add_index :admin_users, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end
