@@ -1,9 +1,5 @@
 ActiveAdmin.setup do |config|
-  # == Site Title
-  #
-  # Set the title that is displayed on the main layout
-  # for each of the active admin pages.
-  #
+  
   config.site_title = "Library"
   config.comments = false
 
@@ -237,7 +233,7 @@ ActiveAdmin.setup do |config|
   # Pagination is enabled by default for all resources.
   # You can control the default per page count for all resources here.
   #
-  # config.default_per_page = 30
+  config.default_per_page = 20
 
   # == Filters
   #
@@ -246,4 +242,5 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+
 end

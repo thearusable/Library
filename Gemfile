@@ -53,8 +53,8 @@ gem 'devise' , '3.4.1'
 #gem 'omniauth-twitter', '1.1.0'
 #gem 'omniauth-facebook', '2.0.1'
 #gem 'omniauth-linkedin', '0.2.0'
-gem 'cancancan'
-#gem 'rails_admin'
+
 gem 'foundation'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'active_skin'

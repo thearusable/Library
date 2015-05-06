@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   devise_for :readers
   devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
