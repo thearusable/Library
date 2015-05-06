@@ -1,9 +1,11 @@
 ActiveAdmin.register Librarian do
+  #manage librarians only for admin
+  menu :if => proc { current_librarian.admin? }
 
   permit_params :email, :password, :password_confirmation
 
 
-  index do
+  index do 
     selectable_column
     id_column
     column :email
