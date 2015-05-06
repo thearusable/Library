@@ -1,5 +1,5 @@
 class ReadersController < InheritedResources::Base
-
+	before_action :authenticate_reader!
   private
 
     def reader_params
