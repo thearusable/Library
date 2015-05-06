@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.1.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
-
+gem 'sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.1'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,7 +32,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2015.2' , platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'puma', '2.11.1'
+gem 'puma', '2.11.2'
 
 
 
