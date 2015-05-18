@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  received: false
+  returned: false
+  receivedDate: 2015-05-19
+  returnedDate: 2015-05-19
+  reader_id: 1
+
+two:
+  received: false
+  returned: false
+  receivedDate: 2015-05-19
+  returnedDate: 2015-05-19
+  reader_id: 1
