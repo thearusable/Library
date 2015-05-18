@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%=javascript_include_tag "vendor/modernizr"%>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div class="header">
+		<div class="row">
+			<div class="small-12 columns header-content">
+				<div class="small-2 image"><%=image_tag("owl.png")%></div>
+				<div class="small-10 welcome">
+					<h1>Witaj Czytelniku!</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="row">
+			<!--<form method="post" action="www.google.pl">	
+				Nazwa: <input type="text">
+				</form>		-->	
+			<div class="small-6 log-form">			
+				  <% form_tag('www.google.pl', :method => "post") %>
+				  <%= label_tag(:name, "Login:") %>
+				  <%= text_field_tag(:name) %>
+				  <%= label_tag(:password, "Password:") %>
+				  <%= text_field_tag(:password) %>
+				  <%= submit_tag("Log In", class:"button radius") %>
+			</div>
+			<div class="small-6 register-button">	  
+				  <% form_tag('www.google.pl', :method => "post") %>
+				  <%= submit_tag("Register", class:"button radius expand") %>
+			</div>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>
+
+
+<!--<%= yield %> -->

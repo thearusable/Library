@@ -235,6 +235,3 @@ DEPENDENCIES
   tzinfo-data (= 1.2015.2)
   uglifier (= 2.7.1)
   web-console (~> 2.0)
-
-BUNDLED WITH
-  1.10.0.pre

@@ -13,3 +13,139 @@
  *= require_tree .
  *= require_self
  */
+
+/*= require foundation */
+
+/* Style do strony głównej */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	background: #f3f3f3;
+}
+
+.header, .footer {
+	width: 100%;
+	background: #021055;
+}
+
+.header {
+	height: 70px;
+}
+
+.footer {
+	height: 30px;
+}
+
+.header-content .image {
+	margin-top: 10px;
+	height: 100px;
+	display: inline-block;
+}
+
+.header-content .welcome {
+	float: right;
+	display: inline-block;
+	margin-top: 70px;
+}
+
+.welcome h1 {
+	text-align: center;
+	font-size: 30px;
+}
+
+.content {
+	min-height: 700px;
+	width: 100%;
+}
+
+.log-form {
+	margin: 80px auto;
+	margin-bottom: 330px;
+}
+
+.log-form .button {
+	float: right;
+}
+
+.register-button {
+	margin: 0 auto;
+}
+
+/* Style do konta czytelnika */
+
+.welcome_user h2 {
+	display: inline-block;
+	color: #fff;
+}
+
+.welcome_user {
+	display: inline-block;
+}
+
+.logout p {
+	display: inline-block;
+	color: #fff;
+	font-size: 22px;
+}
+
+.logout {
+	float: right;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.subheader {
+	background: #2ba6cb;
+	height: 50px;
+	margin-top: 0;
+}
+
+.option {
+	display: inline-block;
+	text-align: left;
+	margin-top: 15px;
+	float: left;
+	color: #000;
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.menu .option:last-child {
+	text-align: center;
+} 
+
+.border {
+	width: 2px;
+	height: 40px;
+	background: #2285a2;
+	float: right;
+	margin-top: 0;
+}
+
+.search-form {
+	margin: 100px auto;
+}
+
+.search-form .button {
+	float: right;
+}
+
+/* Style do konta bibliotekarza */
+
+.left-menu {
+	float: left;
+	margin-left: -18px;
+}
+
+.left-menu ul .menu-option {
+	padding: 35px;
+	background: #2ba6cb;
+	text-align: center;
+	border-bottom: 2px solid #2285a2;
+}
+
+.left-menu ul .menu-option:last-child {
+	border-bottom: none;
+	min-height: 376px;
+}

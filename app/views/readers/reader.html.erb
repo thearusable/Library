@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%=javascript_include_tag "vendor/modernizr"%>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div class="header">
+		<div class="row">
+			<div class="small-12 columns header-content">
+				<div class="small-3 welcome_user">	
+					<h2>Witaj ...!</h2>
+				</div>
+				<div class="small-2 logout">
+					<p>Log Out</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="subheader">
+		<div class="row">
+			<ul class="menu">
+				<li class="small-3 option">Wyszukiwanie<div class="border"></div></li>
+				<li class="small-3 option">Moje rezerwacje<div class="border"></div></li>
+				<li class="small-3 option">Moje wypożyczenia<div class="border"></div></li>
+				<li class="small-3 option">Statystyki</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<div class="row">
+			<div class="small-6 search-form">
+			  <% form_tag('www.google.pl', :method => "get") %>
+			  <%= label_tag(:search, "Search:") %>
+			  <%= text_field_tag(:search) %>
+			  <%= submit_tag("Search", class:"button radius") %>
+			</div>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>
