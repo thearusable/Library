@@ -58,3 +58,5 @@ gem 'foundation'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_skin'
+
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"

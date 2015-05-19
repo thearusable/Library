@@ -1,6 +1,5 @@
 class AddColumnsToBooks < ActiveRecord::Migration
   def change
-    add_column :books, :image, :string
     add_column :books, :description, :text
     add_column :books, :averageRating, :integer
     add_column :books, :releaseDate, :date

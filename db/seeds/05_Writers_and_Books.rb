@@ -1,7 +1,7 @@
 #writers - ready
 Writer.delete_all
-w1 = Writer.create(name: 'Testowy1', lastname: 'Writer', biography: 'nie ma', nationality: 'kto to wie', image: 'not find :D');
-w2 = Writer.create(name: 'Testowy2', lastname: 'Writer', biography: 'nie ma', nationality: 'kto to wie', image: 'not find :D');
+w1 = Writer.create(name: 'Testowy1', lastname: 'Writer', biography: 'nie ma', nationality: 'kto to wie');
+w2 = Writer.create(name: 'Testowy2', lastname: 'Writer', biography: 'nie ma', nationality: 'kto to wie');
 
 #books - ready
 Book.delete_all

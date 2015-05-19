@@ -5,7 +5,6 @@ class CreateWriters < ActiveRecord::Migration
       t.string :lastname
       t.text :biography
       t.string :nationality
-      t.string :image
 
       t.timestamps null: false
     end
