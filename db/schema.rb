@@ -11,26 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506202644) do
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+ActiveRecord::Schema.define(version: 20150519065838) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
-    t.string   "author"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "image"
+    t.text     "description"
+    t.integer  "averageRating"
+    t.date     "releaseDate"
+    t.string   "publishingHouse"
+    t.string   "ISBN"
+    t.integer  "category_id"
+    t.integer  "reservation_id"
+  end
+
+  create_table "books_writers", id: false, force: :cascade do |t|
+    t.integer "book_id",   null: false
+    t.integer "writer_id", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "booksCount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +55,8 @@ ActiveRecord::Schema.define(version: 20150506202644) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "adress"
+    t.string   "phone"
   end
 
   add_index "librarians", ["email"], name: "index_librarians_on_email", unique: true
@@ -71,9 +77,40 @@ ActiveRecord::Schema.define(version: 20150506202644) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "adress"
+    t.string   "phone"
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true
   add_index "readers", ["reset_password_token"], name: "index_readers_on_reset_password_token", unique: true
+
+  create_table "reservations", force: :cascade do |t|
+    t.boolean  "received"
+    t.boolean  "returned"
+    t.date     "receivedDate"
+    t.date     "returnedDate"
+    t.integer  "reader_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "score"
+    t.string   "comment"
+    t.integer  "book_id"
+    t.integer  "reader_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "writers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "lastname"
+    t.text     "biography"
+    t.string   "nationality"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

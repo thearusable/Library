@@ -1,3 +1,3 @@
 class Writer < ActiveRecord::Base
-	has_many :book_writer
+	has_and_belongs_to_many :books
 end
