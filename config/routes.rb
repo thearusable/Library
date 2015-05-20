@@ -14,6 +14,12 @@ end
  
   get 'reader/:id' => 'readers#reader'
   get 'librarian/:id' => 'librarians#librarian'
+
+resources :readers do
+	member do 
+		get 'my_reservations'
+	end
+end  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
