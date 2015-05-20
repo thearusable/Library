@@ -5,9 +5,6 @@ class ReadersController < InheritedResources::Base
     def reader_params
       params.require(:reader).permit(:name, :lastname)
     end
-    def after_sign_in_path_for(resource)
-    	admin_root
-    	
-    end
+  
 end
 

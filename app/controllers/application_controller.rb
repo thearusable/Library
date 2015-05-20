@@ -5,5 +5,5 @@ class ApplicationController < ActionController::Base
  def index
     render file:'app/views/layouts/index'
   end
-   
+ 
 end
