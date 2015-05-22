@@ -6,7 +6,7 @@ class ReadersController < InheritedResources::Base
       params.require(:reader).permit(:name, :lastname)
     end
     def searching
-  	render file: "readers#reader"
+ # render file: "readers#reader"
   end
   def my_reservations
   	render file: "readers#my_reservations"
@@ -15,7 +15,8 @@ class ReadersController < InheritedResources::Base
   	render file: "readers#my_borrows"
   end
   def my_statistics
-  	render file: "readers#my_mystatistics"
+  #	render file: "readers#my_statistics"
   end
+ 
 end
 
