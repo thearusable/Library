@@ -26,7 +26,7 @@
 		<div class="row">
 			<ul class="menu">
 				<li class="small-3 option">
-				<%= link_to 'Wyszukiwanie', {controller: "readers", action: 'reader'} %>
+				 <%= link_to 'Wyszukiwanie', reader_path(current_reader) %>
 				<div class="border"></div></li>
 				<li class="small-3 option">
 				 <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'} %>
@@ -34,8 +34,8 @@
 				<li class="small-3 option">
 				<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'} %>
 				<div class="border"></div></li>
-				<li class="small-3 option">
-				<%= link_to 'Statystyki', {controller: "readers", action: 'my_statistics'} %>
+				<li class="small-3 option">Statystyki
+				
 				</li>
 			</ul>
 		</div>

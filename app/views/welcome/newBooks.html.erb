@@ -15,28 +15,24 @@
 			<div class="small-12 columns header-content">
 				<div class="small-2 image"><%=image_tag("owl.png")%></div>
 				<div class="small-10 welcome">
-					<h1>Witaj Czytelniku!</h1>
+					<ul>
+					<li><%= link_to 'Home', {controller: "welcome", action: 'index'} %></li>
+					<li><%= link_to 'New books', {controller: "welcome", action: 'newBooks'} %></li>
+					<li><%= link_to 'About', {controller: "welcome", action: 'about'} %></li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="content">
 		<div class="row">
-			<!--<form method="post" action="www.google.pl">	
-				Nazwa: <input type="text">
-				</form>		-->	
-			<div class="small-6 log-form">			
-				  <% form_tag('www.google.pl', :method => "post") %>
-				  <%= label_tag(:name, "Login:") %>
-				  <%= text_field_tag(:name) %>
-				  <%= label_tag(:password, "Password:") %>
-				  <%= text_field_tag(:password) %>
-				  <%= submit_tag("Log In", class:"button radius") %>
-			</div>
-			<div class="small-6 register-button">	  
-				  <% form_tag('www.google.pl', :method => "post") %>
-				  <%= submit_tag("Register", class:"button radius expand") %>
-			</div>
+			<h1>Najnowsze pozycje!</h1>
+			<table>
+				<tr>
+					<td class="small-2"><%=image_tag("owl.png")%></td>
+					<td>Description</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="footer"></div>

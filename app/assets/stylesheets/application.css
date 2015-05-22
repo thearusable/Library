@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+/*= require bootstrap.min
 
 /*= require foundation */
 
@@ -148,4 +149,8 @@ body {
 .left-menu ul .menu-option:last-child {
 	border-bottom: none;
 	min-height: 376px;
+}
+
+.loginy {
+	float: right;
 }

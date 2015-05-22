@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   resources :books
   devise_for :readers do
   	  root :to => "readers#reader"
@@ -8,8 +10,10 @@ end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-  root 'application#index'
+   root 'welcome#index'
+  get 'about' => 'welcome#about'
+  get 'newBooks' => 'welcome#newBooks'
+#root 'application#index'
   get 'readers/sign_in' => 'layouts#index'
  
   get 'reader/:id' => 'readers#reader'
@@ -27,8 +31,8 @@ resources :readers do
 	end
 end  
 
-get 'reader/:id/statistics' => 'readers#my_statistisc'
-get 'reader/:id/searching' => 'readers#reader'
+#get 'reader/my_statistics' => 'readers#my_statistisc'
+#get 'reader/searching' => 'readers#reader'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
