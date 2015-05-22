@@ -4,6 +4,6 @@ class Book < ActiveRecord::Base
 	belongs_to :category
 
 
-has_attached_file :image, :styles => { :medium => "238x238>", :thumb => "100x100>" }
+has_attached_file :image, :styles => { :normal => "512x512", :medium => "238x238>", :thumb => "32x32>" }
 validates_attachment :image, content_type: { content_type:     ["image/jpg", "image/jpeg", "image/png"] }
 end

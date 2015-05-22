@@ -6,4 +6,3 @@ class BooksController < InheritedResources::Base
       params.require(:book).permit(:title, :description, :averageRating, :publishingHouse, :ISBN,:image)
     end
 end
-

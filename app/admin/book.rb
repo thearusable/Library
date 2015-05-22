@@ -2,54 +2,57 @@ ActiveAdmin.register Book do
 
     permit_params :title, :description, :averageRating, :publishingHouse, :ISBN,:image
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-#controller do
-#    def permitted_params
+    config.per_page = 30
 
-#    end
-#  end
+    #filters
+    filter :category
+    filter :writers, :as => :select
+    filter :title
+    filter :publishingHouse
+    filter :ISBN
+    filter :releaseDate
+    filter :description
+    #index
+    index do
+      column "Cover" do |book|
+        image_tag(book.image(:thumb))
+      end
+      column :title
+      column :averageRating
+      column :publishingHouse
+      column :ISBN
+      actions
+    end
 
-form :html => { :enctype => "multipart/form-data" } do |f|
-    f.inputs "Details" do
+    #update
+    form :html => { :enctype => "multipart/form-data" } do |f|
+      f.inputs "Details" do
       f.input :title
-      f.input :description
-      f.input :averageRating
-      #f.input :releaseDate, :as => :date
+      f.input :writers, :as => :select
+      f.input :image, :as => :file, :label => "Cover", :hint => image_tag(f.object.image.url(:medium))
       f.input :publishingHouse
       f.input :ISBN
-      f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.url(:medium))
-      #f.template.image_tag(f.object.image.url(:image))
-      #f.input :thumbnail, :required => false, :as => :file
-      #, :hint => f.template.image_tag(f.object.image.url(:small))
-      # Will preview the image when the object is edited
+      f.input :releaseDate
+      f.input :description
+      end
+      f.actions
     end
-    f.actions
-  end
 
-#show do |b|
-#      attributes_table do
-#        row :title
-#        row :description
-#        row :averageRating
-#        row :releaseDate
-#        row :publishingHouse
-#        row :ISBN
-#        row :thumbnail do
-#          image_tag(b.thumbnail.url(:thumb))
-#        end
-#        # Will display the image on show object page
-#      end
-#    end
+    #read
+    show do |b|
+      attributes_table do
+        row :title
+        row :writers
+        row "Cover" do
+          image_tag(b.image(:thumb))
+        end
+        row :averageRating
+        row :publishingHouse
+        row :ISBN
+        row :releaseDate
+        row :description
+        # Will display the image on show object page
+      end
+    end
 
 end

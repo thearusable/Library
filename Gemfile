@@ -27,7 +27,7 @@ gem 'puma', '2.11.2'
 
 group :development, :test do
 	gem 'sqlite3'
-end	
+end
 
 group :production do
 	gem 'pg', '0.18.1'

@@ -1,17 +1,49 @@
 ActiveAdmin.register Reservation do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
+	config.per_page = 30
 
+    #filters
+    filter :received
+    filter :returned
+    filter :reader, :as => :select
+    filter :receivedDate
+    filter :returnedDate
+    filter :updated_at
+
+	#index
+    index do
+      column :received
+      column :returned
+      column :receivedDate
+      column :returnedDate
+      column :reader_id
+      column :updated_at
+      actions
+    end
+
+    #update
+    form :html => { :enctype => "multipart/form-data" } do |f|
+      f.inputs "Details" do
+      f.inputs :received
+      f.inputs :returned
+      f.inputs :receivedDate
+      f.inputs :returnedDate
+      end
+      f.actions
+    end
+
+    #read
+    show do 
+      attributes_table do
+        row :received
+      	row :returned
+      	row :receivedDate
+      	row :returnedDate
+      	row :reader_id
+      	row :created_at
+      	row :updated_at
+        # Will display the image on show object page
+      end
+    end
 
 end
