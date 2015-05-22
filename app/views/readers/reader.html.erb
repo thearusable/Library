@@ -25,12 +25,18 @@
 	<div class="subheader">
 		<div class="row">
 			<ul class="menu">
-				<li class="small-3 option">Wyszukiwanie<div class="border"></div></li>
+				<li class="small-3 option">
+				<%= link_to 'Wyszukiwanie', {controller: "readers", action: 'reader'} %>
+				<div class="border"></div></li>
 				<li class="small-3 option">
 				 <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'} %>
 				 <div class="border"></div></li>
-				<li class="small-3 option">Moje wypożyczenia<div class="border"></div></li>
-				<li class="small-3 option">Statystyki</li>
+				<li class="small-3 option">
+				<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'} %>
+				<div class="border"></div></li>
+				<li class="small-3 option">
+				<%= link_to 'Statystyki', {controller: "readers", action: 'my_statistics'} %>
+				</li>
 			</ul>
 		</div>
 	</div>

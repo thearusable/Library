@@ -20,6 +20,16 @@ resources :readers do
 		get 'my_reservations'
 	end
 end  
+
+resources :readers do
+	member do 
+		get 'my_borrows'
+	end
+end  
+
+get 'reader/:id/statistics' => 'readers#my_statistisc'
+get 'reader/:id/searching' => 'readers#reader'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
