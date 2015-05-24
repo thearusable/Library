@@ -14,10 +14,17 @@ ActiveAdmin.register Book do
     filter :description
     #index
     index do
+      selectable_column
       column "Cover" do |book|
         image_tag(book.image(:thumb))
       end
       column :title
+      column "Category" do |b|
+        link_to Category.find(b.category_id).name, admin_category_path(b) 
+      end
+      column "Writers" do |b|
+        b.writers.map{|w| w.name + " " + w.lastname}.join(", ")
+      end 
       column :averageRating
       column :publishingHouse
       column :ISBN

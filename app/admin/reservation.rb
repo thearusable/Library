@@ -12,11 +12,15 @@ ActiveAdmin.register Reservation do
 
 	#index
     index do
+      selectable_column
       column :received
       column :returned
       column :receivedDate
       column :returnedDate
-      column :reader_id
+      column "Reader" do |r|
+        obj = Reader.find(r.reader_id)
+        link_to obj.name + " " + obj.lastname, admin_reader_path(obj)
+      end 
       column :updated_at
       actions
     end

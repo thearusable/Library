@@ -14,6 +14,7 @@ ActiveAdmin.register Librarian do
 
 	#index
     index do
+      selectable_column
       column :name
       column :lastname
       column :email

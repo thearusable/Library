@@ -6,6 +6,7 @@ ActiveAdmin.register Category do
 
 	#index
     index do
+    selectable_column
       column :name
       column :booksCount
       actions
