@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :books
+ # resources :readers
   devise_for :readers do
   	  root :to => "readers#reader"
 end
@@ -13,12 +14,13 @@ end
    root 'welcome#index'
   get 'about' => 'welcome#about'
   get 'newBooks' => 'welcome#newBooks'
+
 #root 'application#index'
   get 'readers/sign_in' => 'layouts#index'
  
-  get 'reader/:id' => 'readers#reader'
+  get 'reader/' => 'readers#searching'
   get 'librarian/:id' => 'librarians#librarian'
-
+  get 'reader/params[:title]' => 'books#searching'
 resources :readers do
 	member do 
 		get 'my_reservations'

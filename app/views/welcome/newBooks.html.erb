@@ -11,6 +11,17 @@
 </head>
 <body>
 	<div class="header">
+	<div class="loginy">
+<% if reader_signed_in? %>
+  Logged in as <strong><%= current_reader.email %></strong>.
+  <%= link_to 'Edit profile', edit_reader_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_reader_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_reader_session_path, :class => 'navbar-link'  %>
+<% end %>
+
+</div>
 		<div class="row">
 			<div class="small-12 columns header-content">
 				<div class="small-2 image"><%=image_tag("owl.png")%></div>

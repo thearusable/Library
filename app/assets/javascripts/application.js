@@ -16,5 +16,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap.min
 //= require_tree .
-//$(document).foundation();
+
 
