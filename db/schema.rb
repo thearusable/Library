@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519110435) do
+ActiveRecord::Schema.define(version: 20150528133217) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.text     "description"
     t.integer  "averageRating"
     t.date     "releaseDate"
     t.string   "publishingHouse"
     t.string   "ISBN"
     t.integer  "category_id"
-    t.integer  "reservation_id"
+    t.integer  "current_reservation_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150519110435) do
     t.integer  "reader_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "book_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -111,8 +112,12 @@ ActiveRecord::Schema.define(version: 20150519110435) do
     t.string   "lastname"
     t.text     "biography"
     t.string   "nationality"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

@@ -6,6 +6,6 @@ class AddColumnsToBooks < ActiveRecord::Migration
     add_column :books, :publishingHouse, :string
     add_column :books, :ISBN, :string
     add_column :books, :category_id, :integer
-    add_column :books, :reservation_id, :integer
+    add_column :books, :current_reservation_id, :integer
   end
 end

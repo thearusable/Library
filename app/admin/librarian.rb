@@ -2,53 +2,46 @@ ActiveAdmin.register Librarian do
 
 	menu if: proc{ current_librarian.admin? } #only for admin
 
+  permit_params :name, :lastname, :email, :admin, :adress, :phone
+
+  actions :index, :new, :create, :update, :edit
+
 	config.per_page = 30
 
+  scope :all, :default => true
+  scope :Admins do
+    Librarian.where({admin: true})
+  end
+
     #filters
-    filter :admin
-    filter :name
-    filter :lastname
-    filter :email
-    filter :adress
-    filter :last_sign_in_at
+    filter :admin, :label => "Admin?"
+    filter :name, :label => "Imię"
+    filter :lastname, :label => "Nazwisko"
+    filter :email, :label => "Email"
+    filter :adress, :label => "Adres"
+    filter :last_sign_in_at, :label => "Ostatnio Widziany"
 
 	#index
     index do
       selectable_column
-      column :name
-      column :lastname
-      column :email
-      column :admin
-      column :last_sign_in_at
+      column "Imię", :name
+      column "Nazwisko", :lastname
+      column "Email", :email
+      column "Admin?", :admin
+      column "Ostatnio Widziany", :last_sign_in_at
       actions
     end
 
     #update
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Details" do
-      f.input :name
-      f.input :lastname
-      f.input :email
-      f.input :admin
-      f.input :adress
-      f.input :phone
+      f.input :name, :label => "Imię"
+      f.input :lastname, :label => "Nazwisko"
+      f.input :email, :label => "Email"
+      f.input :admin, :label => "Admin?"
+      f.input :adress, :label => "Adres"
+      f.input :phone, :label => "Telefon"
       end
       f.actions
     end
-
-    #read
-    show do 
-      attributes_table do
-        row :name
-        row :lastname
-        row :email
-        row :admin
-        row :adress
-        row :phone
-        row :last_sign_in_at
-        row :updated_at
-        # Will display the image on show object page
-      end
-    end
-
 end

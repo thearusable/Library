@@ -1,65 +1,56 @@
 ActiveAdmin.register Book do
 
-    permit_params :title, :description, :averageRating, :publishingHouse, :ISBN,:image
+    permit_params :title, :image, :publishingHouse, :ISBN, :releaseDate,  :description
+
+    actions :index, :new, :create, :update, :edit
 
     config.per_page = 30
 
     #filters
-    filter :category
-    filter :writers, :as => :select
-    filter :title
-    filter :publishingHouse
-    filter :ISBN
-    filter :releaseDate
-    filter :description
+    filter :category, :label => "Kategoria"
+    filter :writers, :as => :select, :label => "Autor"
+    filter :title, :label => "Tytuł"
+    filter :publishingHouse, :label => "Wydawnictwo"
+    filter :ISBN, :label => "ISBN"
+    filter :releaseDate, :label => "Rok Wydania"
+    filter :description, :label => "Opis"
     #index
     index do
       selectable_column
-      column "Cover" do |book|
+      column "Okładka" do |book|
         image_tag(book.image(:thumb))
       end
-      column :title
-      column "Category" do |b|
+      column "Tytuł", :title
+      column "Zarezerwowane Przez" do |b|
+        if b.current_reservation_id?
+          r = Reservation.find(b.current_reservation_id)
+          re = Reader.find(r.reader_id)
+          link_to re.name + " " + re.lastname, admin_reservation_path(r)
+        end
+      end
+      column "Kategoria" do |b|
         link_to Category.find(b.category_id).name, admin_category_path(b) 
       end
-      column "Writers" do |b|
+      column "Autor" do |b|
         b.writers.map{|w| w.name + " " + w.lastname}.join(", ")
       end 
-      column :averageRating
-      column :publishingHouse
-      column :ISBN
+      column "Średnia Ocen", :averageRating
+      column "Wydawnictwo", :publishingHouse
+      column "ISBN", :ISBN
       actions
     end
 
     #update
     form :html => { :enctype => "multipart/form-data" } do |f|
-      f.inputs "Details" do
-      f.input :title
-      f.input :writers, :as => :select
-      f.input :image, :as => :file, :label => "Cover", :hint => image_tag(f.object.image.url(:medium))
-      f.input :publishingHouse
-      f.input :ISBN
-      f.input :releaseDate
-      f.input :description
+      f.inputs "Szczegóły:" do
+      f.input :title, :label => "Tytuł"
+      f.input :image, :as => :file, :label => "Okładka", :hint => image_tag(f.object.image.url(:medium))
+      f.input :publishingHouse, :label => "Wydawnictwo"
+      f.input :ISBN, :label => "ISBN"
+      f.input :releaseDate, :label => "Data Wydania"
+      f.input :description, :label => "Opis"
       end
       f.actions
-    end
-
-    #read
-    show do |b|
-      attributes_table do
-        row :title
-        row :writers
-        row "Cover" do
-          image_tag(b.image(:thumb))
-        end
-        row :averageRating
-        row :publishingHouse
-        row :ISBN
-        row :releaseDate
-        row :description
-        # Will display the image on show object page
-      end
     end
 
 end

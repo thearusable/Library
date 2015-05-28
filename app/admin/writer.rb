@@ -1,42 +1,31 @@
 ActiveAdmin.register Writer do
 
+  actions :index, :new, :create, :update, :edit
+
 #filters
-    filter :name
-    filter :lastname
-    filter :nationality
+    filter :name, :label => "Imię"
+    filter :lastname, :label => "Nazwisko"
+    filter :nationality, :label => "Narodowość"
 
 	#index
     index do
       selectable_column
-      column :name
-      column :lastname
-      column :nationality
+      column "Imię", :name
+      column "Nazwisko", :lastname
+      column "Narodowość", :nationality
+      column "Biografia", :biography
       actions
     end
 
     #update
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Details" do
-      f.inputs :name
-      f.inputs :lastname
-      f.inputs :nationality
-      f.inputs :biography
+      f.input :name, :label => "Imię"
+      f.input :lastname, :label => "Nazwisko"
+      f.input :nationality, :label => "Narodowość"
+      f.input :biography, :label => "Biografia"
       end
-      f.actions
+      f.actions 
     end
-
-    #read
-    show do 
-      attributes_table do
-        row :name
-      	row :lastname
-      	row :nationality
-      	row :biography
-      	row :created_at
-      	row :updated_at
-        # Will display the image on show object page
-      end
-    end
-
 
 end

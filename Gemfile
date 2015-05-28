@@ -34,6 +34,8 @@ group :production do
 	gem 'rails_12factor' , '0.0.3'
 end
 
+gem 'faker', '~> 1.4.3'
+
 gem 'devise' , '3.4.1'
 #gem 'protected_attributes'
 #gem 'omniauth', '1.2.2'
