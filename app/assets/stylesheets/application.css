@@ -22,12 +22,22 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	background: #f3f3f3;
+}
+
+.editLink a, .logoutLink a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.whoIsLogged {
+	color: white;
 }
 
 .header, .footer {
 	width: 100%;
-	background: #021055;
+	background: url("test.png") repeat-x;
 }
 
 .header {
@@ -36,6 +46,54 @@ body {
 
 .footer {
 	height: 30px;
+}
+
+.content {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.header .logoutLink, .editLink {
+	float: right;
+	display: inline-block;
+	text-decoration: none;
+	font-size: 20px;
+	margin-left: 50px;
+}
+
+.subheader {
+	width: 100%;
+	display: inline-block;
+	background: url("nav.png");
+}
+
+.menu {
+	text-align: center;
+}
+
+.menu li {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	padding: 10px 0 0 0;
+}
+
+.menu li a {
+	color: #000;
+	text-decoration: none;
+	padding: 13px 40px;
+}
+
+.menu li a:hover {
+	color: #fff;
+	text-decoration: none;
+	background: url("test.png");
+}
+
+.active {
+	color: #fff;
+	text-decoration: none;
+	background: url("test.png");
 }
 
 .header-content .image {
@@ -55,7 +113,7 @@ body {
 	font-size: 30px;
 }
 
-.content {
+.fff {
 	min-height: 700px;
 	width: 100%;
 }
@@ -97,8 +155,7 @@ body {
 }
 
 .subheader {
-	background: #2ba6cb;
-	height: 50px;
+	height: 40px;
 	margin-top: 0;
 }
 
@@ -115,14 +172,6 @@ body {
 .menu .option:last-child {
 	text-align: center;
 } 
-
-.border {
-	width: 2px;
-	height: 40px;
-	background: #2285a2;
-	float: right;
-	margin-top: 0;
-}
 
 .search-form {
 	margin: 100px auto;
@@ -153,4 +202,12 @@ body {
 
 .loginy {
 	float: right;
+}
+
+@media screen and (max-width:320px) {
+	.header {
+		height: 40px;
+	}
+
+	
 }

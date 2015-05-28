@@ -11,27 +11,40 @@ end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+  root 'welcome#index'
   get 'about' => 'welcome#about'
   get 'newBooks' => 'welcome#newBooks'
 
 #root 'application#index'
-  get 'readers/sign_in' => 'layouts#index'
+  #get 'readers/sign_in' => 'layouts#index'
  
-  get 'reader/' => 'readers#searching'
-  get 'librarian/:id' => 'librarians#librarian'
-  get 'reader/params[:title]' => 'books#searching'
-resources :readers do
+ get 'reader/:id' => 'readers#searching'
+ #get 'reader/:id/searching/:title' => 'books#searching'
+
+  #get 'reader/:id/:title' => 'books#searching'
+ # get '/librarian/:id' => 'librarians#librarian'
+ # get '/reader/params[:title]' => 'books#searching'
+
+=begin resources :books do
+	collection do
+		get 'searching'
+	end
+end
+=end
+
+ resources :readers do
 	member do 
 		get 'my_reservations'
+		get 'my_borrows'
+		get 'searching'
+		get 'my_statistics'
 	end
 end  
 
-resources :readers do
-	member do 
-		get 'my_borrows'
-	end
-end  
+
+#get 'readers/:id/searching' => 'readers#searching', as: :searching
+#match 'searching' => 'book#searching', :as => 'searching'
+#map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
 
 #get 'reader/my_statistics' => 'readers#my_statistisc'
 #get 'reader/searching' => 'readers#reader'

@@ -4,65 +4,68 @@
   <title>Library</title>
   <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%=javascript_include_tag "vendor/modernizr"%>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+	<!--Nagłówek-->
 	<div class="header">
-<div>
-	<% if reader_signed_in? %>
-  Logged in as <strong><%= current_reader.email %></strong>.
-  <%= link_to 'Edit profile', edit_reader_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'navbar-link'  %>
-  <%end%>
-  </div>
-		<div class="row">
-			<div class="small-12 columns header-content">
-				<div class="small-3 welcome_user">	
-					<h2>Witaj ...!</h2>
-				</div>
-				<div class="small-2 logout">
-					<p>Log Out</p>
-				</div>
-			</div>
-		</div>
+		<div class="content">
+		  <% if reader_signed_in? %>
+		  <p class="whoIsLogged">Logged in as <strong><%= current_reader.email %></strong></p>
+		  <div class="logoutLink"><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></div>
+		  <div class="editLink"><%= link_to 'Edit profile', edit_reader_registration_path, :class => 'links'%></div>
+		  <%end%>
+	  	</div>
 	</div>
 	<div class="subheader">
-		<div class="row">
+		<div class="content">
 			<ul class="menu">
-				<li class="small-3 option">
-				 <%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'} %>
-				<div class="border"></div></li>
-				<li class="small-3 option">
-				 <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'} %>
-				 <div class="border"></div></li>
-				<li class="small-3 option">
-				<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'} %>
-				<div class="border"></div></li>
-				<li class="small-3 option">Statystyki
-				
+				<li class="small-3">
+				<%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'} %></li>
+				<li class="small-3">
+				<%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'} %></li>
+				<li class="small-3">
+				<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'} %></li>
+				<li class="small-3">
+				<%= link_to 'Moje statystyki', {controller: "readers", action: 'my_statistics'} %>
 				</li>
 			</ul>
 		</div>
 	</div>
-	<div class="content">
+	<div class="fff">
 		<div class="row">
+		<!--
 			<div class="small-6 search-form">
-			  <%= form_tag(controller:"books", action: "searching", :method => "get") do %>
+			 <%= form_tag ({:controller => "readers" ,:action => "searching"})  %>
 			  <%= label_tag(:title, "Search") %>
 			  <%= text_field_tag(:title, params[:title]) %>
 			  <%= submit_tag("Search", class:"button radius") %>
-			  <%end%>
+			
 			</div>
+		-->
+		<%= form_tag searching_reader_path, :method => 'get' do %>
+  			<p>
+    	<%= text_field_tag :title, params[:title] %>
+    	<%= submit_tag "Search", :name => nil %>
+ 		 </p>
+		<% end %>
 			<div>
-				<% if @books.present? %>
-  <%= render @books %>
-<% else %>
-  <p>There are no posts containing the term(s) <%= params[:title] %>.</p>
-<% end %>
-			</div>
+		<% if !@books.nil? %>
+		<% @books.each do |book| %>
+      	<tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	</tr>
+    	<% end %>
+    	<% end %>
+ 			</div>
 		</div>
 	</div>
 	<div class="footer"></div>

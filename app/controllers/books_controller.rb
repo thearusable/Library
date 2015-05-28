@@ -6,9 +6,16 @@ class BooksController < InheritedResources::Base
       params.require(:book).permit(:title, :description, :averageRating, :publishingHouse, :ISBN,:image)
     end
 
+
+#def searching
+#  @books = Book.search(params[:title])
+#end
+
+
+=begin
     def searching
     	puts "sdsdsbjsha"
-      if params[:tile]
+      if params[:title]
          @books = Book.search(params[:title]).order("created_at DESC")
       else
          @books = Book.all.order("created_at DESC")
@@ -16,7 +23,7 @@ class BooksController < InheritedResources::Base
 	@books.each do |b|
 		b.title
 	end
-=begin      puts "<table>"
+      puts "<table>"
       @books.each do |book|
           puts "<tr><td>"
           puts book[:title]
@@ -24,7 +31,19 @@ class BooksController < InheritedResources::Base
       puts "</table>"
      end
 =end 
-    end
+   # end
 
 end
 
+=begin		 <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'} %>
+<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'} %>
+
+
+
+
+  <%= form_tag books_path, :method => "get") do %>
+			  <%= label_tag(:title, "Search") %>
+			  <%= text_field_tag(:title, params[:title]) %>
+			  <%= submit_tag("Search", class:"button radius") %>
+			  <%end%>
+=end

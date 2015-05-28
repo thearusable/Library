@@ -8,6 +8,19 @@ has_attached_file :image, :styles => { :medium => "238x238>", :thumb => "100x100
 validates_attachment :image, content_type: { content_type:     ["image/jpg", "image/jpeg", "image/png"] }
 end
 
+
+def self.search(search)
+  if search
+    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+end
+
+
+
+=begin
 def self.search(query)
 	where("title like?", "%#{query}%")
 end
+=end
