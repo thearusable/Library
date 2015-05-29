@@ -43,9 +43,19 @@
 				<h2 class='myResHeader'>Moje rezerwacje</h2>
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
-					<tr>
-						<td></td>
-					</tr>
+					<% if !@reservations.nil? %>
+						<% @reservations.each do |reservation| %>
+				      	<tr>
+					        <td><%= reservation.received %></td>
+					        <td><%= reservation.returned %></td>
+					        <td><%= reservation.receivedDate %></td>
+					        <td><%= reservation.returnedDate %></td>
+					        <td><%= link_to 'Show', reservation %></td>
+				      	</tr>
+				    	<% end %>
+				    <%else%>
+				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+			    	<% end %>
 				</table>
 			</div>
 		</div>

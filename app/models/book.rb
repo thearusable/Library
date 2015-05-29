@@ -19,6 +19,7 @@ end
 
 
 
+
 =begin
 def self.search(query)
 	where("title like?", "%#{query}%")

@@ -1,7 +1,7 @@
 class ReadersController < InheritedResources::Base
 	before_action :authenticate_reader!
   private
-
+@reservations = Reservation.getReservations
     def reader_params
       params.require(:reader).permit(:name, :lastname)
     end
@@ -9,6 +9,7 @@ class ReadersController < InheritedResources::Base
        @books = Book.search(params[:title])
     end
     def my_reservations
+      
     	render file: "readers#my_reservations"
     end
 
