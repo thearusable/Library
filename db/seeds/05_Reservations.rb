@@ -1,12 +1,28 @@
 #reservations - ready
-
-#received and returned
 100.times do |n|
     r = Reservation.new
-    r.received =  true
-    r.returned = true
-    r.reader_id =  Random.rand(399) + 1
-    r.book_id = Random.rand(399) + 1
+    bool = [true, true, true, true, false].sample
+    if bool == true #received true
+    	r.received =  true
+    	r.receivedDate = Date.yesterday
+    	bool2 = [true, false, false].sample
+    	r.returned = bool2
+    	if bool2 == true
+	    	r.returnedDate = Date.today
+    	end	
+    end
+
+    if bool == false #
+    	r.received = false
+    	r.returned = false
+    end
+
+    r.reader_id =  Random.rand(99) + 1
+    book = Random.rand(499) + 1
+    r.book_id = book
+    bb = Book.find(book)
+    bb.current_reservation_id = n
+    bb.save
 
     r.save
 end

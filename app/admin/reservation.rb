@@ -13,12 +13,6 @@ ActiveAdmin.register Reservation do
   scope :NieZwrócono do |r|
     Reservation.where({returned: false})
   end
-  scope :UpłynełaDataOddania do |r|
-    Reservation.where(['receivedDate > ?', Date.today])
-  end
-  scope :UpłynełaDataZwrócenia do |r|
-    Reservation.where(['returnedDate > ?', Date.today])
-  end
 
     #filters
     filter :received, :label => "Odebrano?"

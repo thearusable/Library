@@ -12,6 +12,9 @@ ActiveAdmin.register Librarian do
   scope :Admins do
     Librarian.where({admin: true})
   end
+  scope :Librarians do 
+    Librarian.where({admin: false})
+  end
 
     #filters
     filter :admin, :label => "Admin?"

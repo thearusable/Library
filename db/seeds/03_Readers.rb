@@ -9,7 +9,7 @@ Reader.create(
 	password: "password",
 	password_confirmation: "password")
 
-200.times do |n|
+100.times do |n|
     r = Reader.new
     r.name =  Faker::Name.first_name
     r.lastname = Faker::Name.last_name

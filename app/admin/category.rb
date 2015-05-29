@@ -1,6 +1,6 @@
 ActiveAdmin.register Category do
 
-  permit_params :name, :booksCount
+  permit_params :name
 
 	filter :name, :label => "Nazwa Kategorii"
 
@@ -19,7 +19,6 @@ ActiveAdmin.register Category do
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Szczegóły:" do
       f.input :name, :label => "Nazwa Kategorii"
-      f.input :booksCount, :label => "Liczba Książek"
       end
       f.actions
     end

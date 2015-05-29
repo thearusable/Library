@@ -1,10 +1,14 @@
 #books - ready
-400.times do |n|
+500.times do |n|
     r = Book.new
     r.title =  Faker::Name.title
     r.description = Faker::Hacker.say_something_smart
+    r.releaseDate = Faker::Date.backward(Random.rand(1000))
+    r.publishingHouse = Faker::Company.name
+    r.ISBN = Faker::Number.number(6)
+    r.image = File.open('app/assets/images/ruby.png')
     r.category_id =  Faker::Lorem.paragraph
-    id = Random.rand(21) + 1
+    id = Random.rand(22) + 1
     r.category_id = id
     cat = Category.find(id)
     cat.booksCount = cat.booksCount + 1
@@ -14,15 +18,19 @@
 end 
 
 #writers - ready
-400.times do |n|
+200.times do |n|
     r = Writer.new
     r.name =  Faker::Name.first_name
     r.lastname = Faker::Name.last_name
     r.biography =  Faker::Lorem.paragraph
     r.nationality = Faker::Address.country
+    r.image = File.open('app/assets/images/ruby.png')
+
     r.books << Book.find(n+1)
-    if Random.rand(1) == 1 
-    	r.books << Book.find(Random.rand(399)+1)
-    end
+    r.books << Book.find(n+1+200)
+    r.books << Book.find(n+1+300)
+
+    r.books << Book.find(Random.rand(500)+1)
+    
     r.save
 end
