@@ -32,7 +32,7 @@ end
 end
 =end
 
- resources :readers do
+resources :readers do
 	member do 
 		get 'my_reservations'
 		get 'my_borrows'
