@@ -11,7 +11,5 @@ ActiveAdmin.setup do |config|
 
   config.batch_actions = true
 
-  config.default_per_page = 20
-
 end
 

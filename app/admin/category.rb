@@ -6,11 +6,11 @@ ActiveAdmin.register Category do
 
   actions :index, :new, :create, :update, :edit
 
-	config.per_page = 30
+  config.per_page = 50
+  config.batch_actions = false
 
 	#index
     index do
-    selectable_column
       column "Nazwa Kategorii", :name
       column "Liczba Książek", :booksCount
       actions

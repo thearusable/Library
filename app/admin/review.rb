@@ -1,8 +1,13 @@
 ActiveAdmin.register Review do
 
+  menu priority: 2
+
   permit_params :score, :comment, :book_id, :reader_id
 
   actions :index, :new, :create, :update, :edit, :destroy
+
+  config.per_page = 50
+  config.batch_actions = false
 
   scope :all, :default => true
   scope :"1" do |r|
@@ -39,13 +44,12 @@ ActiveAdmin.register Review do
  #filters
     filter :score, :label => "Ocena"
     filter :comment, :label => "Komentarz"
-    filter :book, :as => :select, :label => "Książka"
-    filter :reader, :as => :select, :label => "Czytelnik"
+    filter :book, :as => :select, :label => "Książka", collection: proc{ Book.order(:name) }
+    filter :reader, :as => :select, :label => "Czytelnik", collection: proc{ Reader.order(:name) }
     filter :updated_at, :label => "Data Aktualizacji"
 
 	#index
     index do
-      selectable_column
       column "Ocena", :score
       column "Komentarz", :comment
       column "Książka" do |r|
@@ -53,7 +57,7 @@ ActiveAdmin.register Review do
 	  end 
 	  column "Czytelnik" do |r|
   		obj = Reader.find(r.reader_id)
-  		link_to obj.name + " " + obj.lastname, admin_reader_path(obj)
+  		link_to obj.name, admin_reader_path(obj)
 	  end 
       column "Data Aktualizacji", :updated_at
       actions
@@ -61,11 +65,8 @@ ActiveAdmin.register Review do
 
     #update
     form :html => { :enctype => "multipart/form-data" } do |f|
-      f.inputs "Details" do
-      f.input :score, :label => "Ocena"
+      f.inputs "Szczegóły:" do
       f.input :comment, :label => "Komentarz"
-      f.input :book, :label => "Książka"
-      f.input :reader, :label => "Czytelnik"
       end
       f.actions
     end

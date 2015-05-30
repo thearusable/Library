@@ -2,46 +2,43 @@ ActiveAdmin.register Librarian do
 
 	menu if: proc{ current_librarian.admin? } #only for admin
 
-  permit_params :name, :lastname, :email, :admin, :adress, :phone
+  permit_params :name, :email, :admin, :adress, :phone
 
   actions :index, :new, :create, :update, :edit
 
-	config.per_page = 30
+  config.per_page = 50
+  config.batch_actions = false
 
   scope :all, :default => true
-  scope :Admins do
+  scope :Administratorzy do
     Librarian.where({admin: true})
   end
-  scope :Librarians do 
+  scope :Bibliotekarze do 
     Librarian.where({admin: false})
   end
 
     #filters
-    filter :admin, :label => "Admin?"
-    filter :name, :label => "Imię"
-    filter :lastname, :label => "Nazwisko"
+    filter :admin, :label => "Admininistrator?"
+    filter :name, :label => "Imię i Nazwisko"
     filter :email, :label => "Email"
     filter :adress, :label => "Adres"
-    filter :last_sign_in_at, :label => "Ostatnio Widziany"
+    filter :last_sign_in_at, :label => "Ostatnie Logowanie"
 
 	#index
     index do
-      selectable_column
-      column "Imię", :name
-      column "Nazwisko", :lastname
+      column "Imię i Nazwisko", :name
       column "Email", :email
-      column "Admin?", :admin
-      column "Ostatnio Widziany", :last_sign_in_at
+      column "Administrator?", :admin
+      column "Ostatnie Logowanie", :last_sign_in_at
       actions
     end
 
     #update
     form :html => { :enctype => "multipart/form-data" } do |f|
-      f.inputs "Details" do
-      f.input :name, :label => "Imię"
-      f.input :lastname, :label => "Nazwisko"
+      f.inputs "Szczegóły:" do
+      f.input :name, :label => "Imię i Nazwisko"
       f.input :email, :label => "Email"
-      f.input :admin, :label => "Admin?"
+      f.input :admin, :label => "Administrator?"
       f.input :adress, :label => "Adres"
       f.input :phone, :label => "Telefon"
       end

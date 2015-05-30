@@ -20,8 +20,7 @@ end
 #writers - ready
 200.times do |n|
     r = Writer.new
-    r.name =  Faker::Name.first_name
-    r.lastname = Faker::Name.last_name
+    r.name =  Faker::Name.name
     r.biography =  Faker::Lorem.paragraph
     r.nationality = Faker::Address.country
     r.image = File.open('app/assets/images/ruby.png')
