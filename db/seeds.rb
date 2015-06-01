@@ -1,7 +1,7 @@
 #how many
 UsersCount = 20
 ReservationsCount = 50
-BooksCount = 100
+BooksCount = 400
 WritersCount = 200
 ReviewsCount = 300
 
