@@ -8,7 +8,7 @@ Reader.create(
 	password: "password",
 	password_confirmation: "password")
 
-100.times do |n|
+UsersCount.times do |n|
     r = Reader.new
     r.name =  Faker::Name.name
     r.email =  Faker::Internet.email 

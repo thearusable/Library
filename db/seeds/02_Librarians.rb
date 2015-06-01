@@ -2,7 +2,7 @@
 Librarian.create(name: 'Testowy Admin', admin: true, email: 'admin@example.com', adress: 'daleko 16', phone: '0-700', password: 'password', password_confirmation: 'password');
 Librarian.create(name: 'Testowy Bibliotekarz', admin: false, email: 'librarian@example.com', adress: 'daleko 16', phone: '0-700', password: 'password', password_confirmation: 'password');
 
-100.times do |n|
+UsersCount.times do |n|
     r = Librarian.new
     r.name =  Faker::Name.name
     r.admin = [false, true, false, false, false, false].sample

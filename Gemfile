@@ -15,18 +15,15 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.12'
 gem 'sdoc', '0.4.1', group: :doc
 
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2015.2' , platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'puma', '2.11.2'
+gem 'puma', '2.11.3'
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'byebug'
+  	gem 'web-console', '~> 2.0'
 end
 
 group :production do

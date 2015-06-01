@@ -9,13 +9,13 @@ ActiveAdmin.register Book do
     config.per_page = 50
     config.batch_actions = false
 
-    sidebar :Informacje do 
-      table_for book.writers do |w|
-        column "Received On" do
-             link_to w.name, admin_writer_path(w)
-          end 
-      end
-    end
+    #sidebar :Informacje do 
+    #  table_for writers do |w|
+    #    column "Received On" do
+    #         link_to w.name, admin_writer_path(w)
+    #      end 
+    #  end
+    #end
 
     #filters
     filter :category, :label => "Kategoria",collection: proc{ Category.order(:name) }

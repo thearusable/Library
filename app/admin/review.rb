@@ -44,7 +44,7 @@ ActiveAdmin.register Review do
  #filters
     filter :score, :label => "Ocena"
     filter :comment, :label => "Komentarz"
-    filter :book, :as => :select, :label => "Książka", collection: proc{ Book.order(:name) }
+    filter :book, :as => :select, :label => "Książka", collection: proc{ Book.order(:title) }
     filter :reader, :as => :select, :label => "Czytelnik", collection: proc{ Reader.order(:name) }
     filter :updated_at, :label => "Data Aktualizacji"
 

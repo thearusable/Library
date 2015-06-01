@@ -1,5 +1,5 @@
 #reservations - ready
-100.times do |n|
+ReservationsCount.times do |n|
     r = Reservation.new
     bool = [true, true, true, true, false].sample
     if bool == true #received true
@@ -17,8 +17,8 @@
     	r.returned = false
     end
 
-    r.reader_id =  Random.rand(99) + 1
-    book = Random.rand(499) + 1
+    r.reader_id =  Random.rand(UsersCount) + 1
+    book = Random.rand(BooksCount) + 1
     r.book_id = book
     bb = Book.find(book)
     bb.current_reservation_id = n
