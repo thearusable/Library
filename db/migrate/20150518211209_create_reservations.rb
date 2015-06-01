@@ -6,6 +6,7 @@ class CreateReservations < ActiveRecord::Migration
       t.date :receivedDate
       t.date :returnedDate
       t.integer :reader_id
+      t.integer :book_id
 
       t.timestamps null: false
     end

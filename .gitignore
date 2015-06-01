@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+Library_development
+bin/spring
+Library_test

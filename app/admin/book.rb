@@ -1,55 +1,72 @@
 ActiveAdmin.register Book do
 
-    permit_params :title, :description, :averageRating, :publishingHouse, :ISBN,:image
+    menu prority: 1
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
-#controller do
-#    def permitted_params
+    permit_params :title, :image, :publishingHouse, :ISBN, :releaseDate,  :description
 
-#    end
-#  end
+    actions :index, :new, :create, :update, :edit
 
-form :html => { :enctype => "multipart/form-data" } do |f|
-    f.inputs "Details" do
-      f.input :title
-      f.input :description
-      f.input :averageRating
-      #f.input :releaseDate, :as => :date
-      f.input :publishingHouse
-      f.input :ISBN
-      f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.url(:medium))
-      #f.template.image_tag(f.object.image.url(:image))
-      #f.input :thumbnail, :required => false, :as => :file
-      #, :hint => f.template.image_tag(f.object.image.url(:small))
-      # Will preview the image when the object is edited
+    config.per_page = 50
+    config.batch_actions = false
+
+    #sidebar :Informacje do 
+    #  table_for writers do |w|
+    #    column "Received On" do
+    #         link_to w.name, admin_writer_path(w)
+    #      end 
+    #  end
+    #end
+
+    #filters
+    filter :category, :label => "Kategoria",collection: proc{ Category.order(:name) }
+    filter :writers, :as => :select, :label => "Autor", collection: proc{ Writer.order(:name) }
+    filter :title, :label => "Tytuł"
+    filter :publishingHouse, :label => "Wydawnictwo"
+    filter :ISBN, :label => "Numer ISBN"
+    filter :releaseDate, :label => "Rok Wydania"
+    filter :description, :label => "Opis"
+    #index
+    index do
+      column "Okładka" do |book|
+        image_tag(book.image(:thumb))
+      end
+      column "Tytuł", :title
+      column "Rezerwujący" do |b|
+        if b.current_reservation_id?
+          r = Reservation.find(b.current_reservation_id)
+          re = Reader.find(r.reader_id)
+          link_to re.name, admin_reservation_path(r)
+        end
+      end
+      column "Kategoria" do |b|
+        link_to Category.find(b.category_id).name, admin_category_path(b) 
+      end
+      column "Autor" do |b|
+        b.writers.map{|w| w.name}.join(", ")
+      end 
+      column "Średnia Ocen", sortable: :averageRating do |b|
+        if b.averageRating != nil
+          b.averageRating 
+        else 
+          "Brak Ocen"
+        end
+      end 
+      column "Wydawnictwo", :publishingHouse
+      column "Numer ISBN", :ISBN
+      actions
     end
-    f.actions
-  end
 
-#show do |b|
-#      attributes_table do
-#        row :title
-#        row :description
-#        row :averageRating
-#        row :releaseDate
-#        row :publishingHouse
-#        row :ISBN
-#        row :thumbnail do
-#          image_tag(b.thumbnail.url(:thumb))
-#        end
-#        # Will display the image on show object page
-#      end
-#    end
+    #update
+    form :html => { :enctype => "multipart/form-data" } do |f|
+      f.inputs "Szczegóły:" do
+      f.input :title, :label => "Tytuł"
+      f.input :image, :as => :file, :label => "Okładka", :hint => image_tag(f.object.image.url(:medium))
+      f.input :publishingHouse, :label => "Wydawnictwo"
+      f.input :ISBN, :label => "Numer ISBN"
+      f.input :releaseDate, :label => "Data Wydania"
+      f.input :description, :label => "Opis"
+      end
+      f.actions
+    end
 
 end

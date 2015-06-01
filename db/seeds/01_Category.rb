@@ -1,5 +1,4 @@
 #categories - ready
-Category.delete_all
 Category.create(name: 'Biografia', booksCount: 0);
 Category.create(name: 'Fantastyka', booksCount: 0);
 Category.create(name: 'Historyczna', booksCount: 0);
