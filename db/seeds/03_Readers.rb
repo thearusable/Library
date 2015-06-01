@@ -1,6 +1,5 @@
 #readers - ready
 Reader.create(
-	id: 1,
 	name: "Testowy Reader",
 	email: "reader@example.com",
 	adress: "daleko 16",
