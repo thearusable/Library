@@ -32,9 +32,9 @@ end
 end
 =end
 
-resources :readers do
+ resources :readers do
 	member do 
-		get 'my_reservations'
+	#	get 'my_reservations'
 		get 'my_borrows'
 		get 'searching'
 		get 'my_statistics'
@@ -42,7 +42,7 @@ resources :readers do
 end  
 
 
-#get 'readers/:id/searching' => 'readers#searching', as: :searching
+get 'readers/:id/my_reservations' => 'readers#my_reservations'
 #match 'searching' => 'book#searching', :as => 'searching'
 #map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
 

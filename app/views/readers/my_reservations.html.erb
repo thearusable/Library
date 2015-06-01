@@ -43,14 +43,16 @@
 				<h2 class='myResHeader'>Moje rezerwacje</h2>
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
+		
 					<% if !@reservations.nil? %>
+					<th><td>received</td><td>returned</td>receivedDate</td><td>returnedDate</td></th>
 						<% @reservations.each do |reservation| %>
 				      	<tr>
 					        <td><%= reservation.received %></td>
 					        <td><%= reservation.returned %></td>
 					        <td><%= reservation.receivedDate %></td>
 					        <td><%= reservation.returnedDate %></td>
-					        <td><%= link_to 'Show', reservation %></td>
+				
 				      	</tr>
 				    	<% end %>
 				    <%else%>
