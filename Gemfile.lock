@@ -256,7 +256,7 @@ DEPENDENCIES
   byebug
   coffee-rails (= 4.1.0)
   devise (= 3.4.1)
-  faker (~> 1.4.3)
+  faker
   foundation
   jbuilder (= 2.2.12)
   jquery-rails (= 4.0.3)
