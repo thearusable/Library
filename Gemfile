@@ -16,6 +16,7 @@ gem 'jbuilder', '2.2.12'
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
 end
@@ -23,11 +24,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '1.2015.2' , platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'puma', '2.11.2'
-
-group :development, :test do
-	gem 'sqlite3'
-end	
+gem 'puma', '2.11.3'
+gem 'faker'
 
 group :production do
 	gem 'pg', '0.18.1'
