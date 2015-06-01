@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519110435) do
+ActiveRecord::Schema.define(version: 20150528133217) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.text     "description"
     t.integer  "averageRating"
     t.date     "releaseDate"
     t.string   "publishingHouse"
     t.string   "ISBN"
     t.integer  "category_id"
-    t.integer  "reservation_id"
+    t.integer  "current_reservation_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "books_writers", id: false, force: :cascade do |t|
@@ -40,8 +44,9 @@ ActiveRecord::Schema.define(version: 20150519110435) do
 
   create_table "librarians", force: :cascade do |t|
     t.string   "name"
-    t.string   "lastname"
     t.boolean  "admin",                  default: false
+    t.string   "adress"
+    t.string   "phone"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "email",                  default: "",    null: false
@@ -54,8 +59,6 @@ ActiveRecord::Schema.define(version: 20150519110435) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "adress"
-    t.string   "phone"
   end
 
   add_index "librarians", ["email"], name: "index_librarians_on_email", unique: true
@@ -63,7 +66,8 @@ ActiveRecord::Schema.define(version: 20150519110435) do
 
   create_table "readers", force: :cascade do |t|
     t.string   "name"
-    t.string   "lastname"
+    t.string   "adress"
+    t.string   "phone"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -76,8 +80,6 @@ ActiveRecord::Schema.define(version: 20150519110435) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "adress"
-    t.string   "phone"
   end
 
   add_index "readers", ["email"], name: "index_readers_on_email", unique: true
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20150519110435) do
     t.date     "receivedDate"
     t.date     "returnedDate"
     t.integer  "reader_id"
+    t.integer  "book_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -104,11 +107,14 @@ ActiveRecord::Schema.define(version: 20150519110435) do
 
   create_table "writers", force: :cascade do |t|
     t.string   "name"
-    t.string   "lastname"
     t.text     "biography"
     t.string   "nationality"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end
