@@ -43,9 +43,26 @@
 				<h2 class='myBorrHeader'>Moje wypożyczenia</h2>
 				<!--Tabela z wypożyczonymi książkami-->
 				<table class='borrows'>
-					<tr>
-						<td></td>
-					</tr>
+					<% if !@borrows.nil? %>
+					<th><td>Tytuł</td><td>Autor</td><td>Data wypożyczenia</td><td>Data zwrotu</td></th>
+						<% @borrows.each do |b| %>
+						<% borrowID = b.id %>
+				      	<tr>
+							<% book = Book.find(b.book_id)%>
+					        <td><%= book.title%></td>  
+					        <td>
+					        	<% book.writers.each do |writer| %>
+					        	<%= writer.name %>
+					        	<% end %> 
+					        </td>
+					        <td><%= b.receivedDate %></td>
+					        <td><%= b.returnedDate %></td>
+					         <td><%= link_to 'Show', {controller: 'readers', action: 'booking', resID: borrowID} %></td>
+					    </tr>
+				    	<% end %>
+				    <%else%>
+				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+			    	<% end %>
 				</table>
 			</div>
 		</div>

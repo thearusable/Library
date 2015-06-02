@@ -20,6 +20,7 @@ end
   #get 'readers/sign_in' => 'layouts#index'
  
  get 'reader/:id' => 'readers#searching'
+
  #get 'reader/:id/searching/:title' => 'books#searching'
 
   #get 'reader/:id/:title' => 'books#searching'
@@ -35,7 +36,7 @@ end
 
  resources :readers do
 	member do 
-	#	get 'my_reservations'
+		get 'my_reservations'
 		get 'my_borrows'
 		get 'searching'
 		get 'my_statistics'
@@ -44,6 +45,8 @@ end
 
 
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
+get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
+get 'reader/:id/booking' => 'readers#booking'
 #match 'searching' => 'book#searching', :as => 'searching'
 #map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
 

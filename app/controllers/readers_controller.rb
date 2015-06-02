@@ -4,27 +4,29 @@ class ReadersController < InheritedResources::Base
    
     
     def searching
-       @books = Book.search(params[:title])
+       @books = Book.where( 'title LIKE ?', "%#{params[:title]}%")
     end
     def my_reservations
-      @reservations = Reservation.where({returned: true})
-    	#render file: "readers#my_reservations"
+      @reservations = Reservation.where({reader_id: params[:id], received: false})
     end
 
     def my_borrows
-    	#render file: "readers#my_borrows"
+      @borrows = Reservation.where({reader_id: params[:id], received: true})
     end
 
     def my_statistics
-    	#render file: "readers#my_statistics"
     end
 
-    def reader
+=begin    def reader
        # @books = Book.find(:all, :order => "id desc", :limit => 30)
-     #   render file: "readers#reader"
-
     end
+=end
+    def booking
+     
 
+   end
+    def showRes
+    end
 
   private
     def reader_params

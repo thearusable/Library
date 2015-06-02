@@ -51,10 +51,16 @@
 				<div class = "booksTable">
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
+						<% bookID = book.id %>
 				      	<tr>
 					        <td><%= book.title %></td>
-					        <td><%= book.author %></td>
-					        <td><%= link_to 'Show', book %></td>
+					        <td>
+								<% book.writers.each do |writer| %>
+					        	<%= writer.name %>
+					        	<% end %>
+					        </td>
+					        <td><%= link_to 'Show', {controller: 'books', action: 'show', bookID: bookID}  %></td></br>
+					        <td><%= link_to 'Rezerwuj', {controller: 'readers', action: 'booking', bookID: bookID} %></td></br>
 				      	</tr>
 				    	<% end %>
 				    <%else%>
