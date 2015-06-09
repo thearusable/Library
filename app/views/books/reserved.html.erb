@@ -1,0 +1,33 @@
+<%= image_tag(@book.image(:medium)) %>
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <% @book.writers.each do |writer| %>
+<%= writer.name %>
+<% end %>
+</p>
+<p>
+<%= @book.description %>
+  <% if params[:commit] == "Book"%>
+	<% if @book.current_reservation_id == nil%>
+	     <% res = Reservation.create({:reader_id => params[:readerID], :book_id => params[:id], :received => false, :returned => false})%>
+			
+			<% book = Book.find(params[:id])%>
+			<% book.current_reservation_id = res.id %>
+		
+			<%book.save%>
+	      	 <p>Książka została zarezerwowana</p>
+	<% else%>
+	      	 <p>Nie można zarezerwować książki!</p>
+	      	 
+	<% end%>
+
+<% end %>
+
+
+</p>
+
