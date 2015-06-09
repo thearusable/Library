@@ -40,13 +40,16 @@ end
 		get 'my_borrows'
 		get 'searching'
 		get 'my_statistics'
+    get 'booking'
 	end
 end  
 
 
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
 get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
-get 'reader/:id/booking' => 'readers#booking'
+post 'books/:id/reserved' => 'books#reserved'
+
+
 #match 'searching' => 'book#searching', :as => 'searching'
 #map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
 

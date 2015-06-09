@@ -56,8 +56,12 @@
 					        	<% end %> 
 					        </td>
 					        <td><%= b.receivedDate %></td>
+					        <%if b.returnedDate==nil%>
+					        <td>Aktualnie w wypożyczeniu</td>
+					        <%else%>
 					        <td><%= b.returnedDate %></td>
-					         <td><%= link_to 'Show', {controller: 'readers', action: 'booking', resID: borrowID} %></td>
+					        <%end%>
+					        <td><%= link_to 'Show', {controller: 'readers', action: 'booking', resID: borrowID} %></td>
 					    </tr>
 				    	<% end %>
 				    <%else%>

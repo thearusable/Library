@@ -10,13 +10,7 @@ validates_attachment :image, content_type: { content_type:     ["image/jpg", "im
 end
 
 
-def self.search(search)
-  if search
-    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
-  else
-    find(:all)
-  end
-end
+
 
 
 
