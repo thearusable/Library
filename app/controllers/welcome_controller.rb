@@ -18,4 +18,7 @@ class WelcomeController < ApplicationController
     @devise_mapping ||= Devise.mappings[:reader]
   end
 
+  def newBooks
+    @books = Book.all.order(:id).reverse_order.limit(10)
+  end
 end

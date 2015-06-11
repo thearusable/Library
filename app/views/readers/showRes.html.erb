@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	 	  <title>Library</title>
-		  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext'%>
-		  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		  <%=javascript_include_tag "vendor/modernizr"%>
-		  <%= csrf_meta_tags %>
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
+<%= render 'header_2' %> 
 	<% r = Reservation.find(params[:resID])%>
 
 	<% book = Book.find(r.book_id)%>
 		<%= image_tag(book.image(:medium)) %>
-		<td><%= book.title%></td>  
-					        <td>
-					        	<% book.writers.each do |writer| %>
-					        	<%= writer.name %>
-					        	<% end %> 
-					        </td>
-					        <td><%= book.description %></td>
-					        <td><%= r.created_at %></td>
-					        <td><%= r.updated_at %></td>
+		<p>Title: <%= book.title%></p>
+        <p>Author: <% book.writers.each do |writer| %>
+        	<%= writer.name %>
+        	<% end %> 
+        </p>
+        <p>Category: <%= Category.find(book.category_id).name %></p>
+        <p>Description: <%= book.description %></p>
+        <p>Created at: <%= r.created_at %></p>
+        <p>Updated at: <%= r.updated_at %></p>
 
 	</body>
 </html>

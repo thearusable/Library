@@ -1,3 +1,4 @@
+<%= render 'header_2' %> 
 <%= image_tag(@book.image(:medium)) %>
 <p>
   <strong>Title:</strong>
@@ -9,6 +10,9 @@
   <% @book.writers.each do |writer| %>
 <%= writer.name %>
 <% end %>
+</p>
+<p><strong>Category:</strong>
+	<%= Category.find(@book.category_id).name %>
 </p>
 <p>
 <%= @book.description %>
