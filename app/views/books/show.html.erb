@@ -12,5 +12,10 @@
 </p>
 <p>
 <%= @book.description %>
+<%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
+  <%= submit_tag("Book") %> 
+<% end %>
+
+
 </p>
 

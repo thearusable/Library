@@ -59,12 +59,12 @@
 					        	<%= writer.name %>
 					        	<% end %>
 					        </td>
-					        <td><%= link_to 'Show', {controller: 'books', action: 'show', bookID: bookID}  %></td></br>
-					        <td><%= link_to 'Rezerwuj', {controller: 'readers', action: 'booking', bookID: bookID} %></td></br>
+					        <td><%= link_to 'Show',{controller: 'books', action: 'show', id: bookID, readerID: current_reader} %></td></br>
+					       
 				      	</tr>
 				    	<% end %>
 				    <%else%>
-				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+				    	<p>Nie znaleziono książek o podanym tytule!</p>
 			    	<% end %>
 		 		</div>
 		 	</div>
