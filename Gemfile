@@ -33,13 +33,6 @@ group :production do
 end
 
 gem 'devise' , '3.4.1'
-#gem 'protected_attributes'
-#gem 'omniauth', '1.2.2'
-#gem 'omniauth-twitter', '1.1.0'
-#gem 'omniauth-facebook', '2.0.1'
-#gem 'omniauth-linkedin', '0.2.0'
-
-gem 'foundation'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_skin'

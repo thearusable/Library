@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <title>Library</title>
@@ -11,18 +11,22 @@
 </head>
 <body>
 
-	<%= render 'header' %> 
+	<%= render 'header' %>
 
 	<div class="container">
-		<h1>Najnowsze pozycje!</h1>
+		<h1>Zaloguj się na istniejące konto!</h1>
 
-		<%= yield %>
-	</div>
+		<%= form_for(:reader, :url => session_path(:reader)) do |f| %>
+	  		<%= f.text_field :email %>
+	  		<%= f.password_field :password %>
+	  		<%= f.check_box :remember_me %>
+	  		<%= f.label :remember_me %>
+	  		<%= f.submit 'Sign in' %>
+	  		<%= link_to "Forgot your password?", new_password_path(:reader) %>
+		<% end %>
+    </div>
 
 	<%= render 'footer' %>
-
+	
 </body>
 </html>
-
-
-<!--<%= yield %> -->

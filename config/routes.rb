@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+
+  get 'newBooks' => 'welcome#newBooks'
+  get 'about' => 'welcome#about'
+  get 'login' => 'welcome#login'
+  get 'register' => 'welcome#register'
 
   resources :books
- # resources :readers
+
   devise_for :readers do
   	  root :to => "readers#reader"
-end
-  devise_for :librarians, ActiveAdmin::Devise.config
+  end
 
+  devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'about' => 'welcome#about'
-  get 'newBooks' => 'welcome#newBooks'
+  
 
 #root 'application#index'
   #get 'readers/sign_in' => 'layouts#index'

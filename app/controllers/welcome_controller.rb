@@ -1,11 +1,21 @@
 class WelcomeController < ApplicationController
-  def index
-  	 render file:'app/views/welcome/index'
+
+	def login
+	end
+	def register
+	end
+
+	helper_method :resource, :resource_name, :devise_mapping
+	def resource_name
+    	:reader
+  	end
+ 
+  def resource
+    @resource ||= Reader.new
   end
-  def newBooks
-  	 render file:'app/views/welcome/newBooks'
+ 
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:reader]
   end
-  def about
-  	 render file:'app/views/welcome/about'
-  end
+
 end
