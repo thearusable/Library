@@ -1,25 +1,31 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+
+  get 'newBooks' => 'welcome#newBooks'
+  get 'about' => 'welcome#about'
+  get 'login' => 'welcome#login'
+  get 'register' => 'welcome#register'
 
   resources :books
- # resources :readers
+
   devise_for :readers do
   	  root :to => "readers#reader"
-end
-  devise_for :librarians, ActiveAdmin::Devise.config
+  end
 
+  devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'about' => 'welcome#about'
-  get 'newBooks' => 'welcome#newBooks'
+  
 
 #root 'application#index'
   #get 'readers/sign_in' => 'layouts#index'
  
  get 'reader/:id' => 'readers#searching'
+
  #get 'reader/:id/searching/:title' => 'books#searching'
 
   #get 'reader/:id/:title' => 'books#searching'
@@ -35,15 +41,20 @@ end
 
  resources :readers do
 	member do 
-	#	get 'my_reservations'
+		get 'my_reservations'
 		get 'my_borrows'
 		get 'searching'
 		get 'my_statistics'
+    get 'booking'
 	end
 end  
 
 
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
+get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
+post 'books/:id/reserved' => 'books#reserved'
+
+
 #match 'searching' => 'book#searching', :as => 'searching'
 #map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
 

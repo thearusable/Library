@@ -43,17 +43,23 @@
 				<h2 class='myResHeader'>Moje rezerwacje</h2>
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
-		
 					<% if !@reservations.nil? %>
-					<th><td>received</td><td>returned</td>receivedDate</td><td>returnedDate</td></th>
-						<% @reservations.each do |reservation| %>
+					<th><td>Tytuł</td><td>Autor</td><td>Data utworzenia</td><td>Data aktualizacji</td></th>
+						<% @reservations.each do |r| %>
+						<% reservationID = r.id %>
 				      	<tr>
-					        <td><%= reservation.received %></td>
-					        <td><%= reservation.returned %></td>
-					        <td><%= reservation.receivedDate %></td>
-					        <td><%= reservation.returnedDate %></td>
-				
-				      	</tr>
+							<% book = Book.find(r.book_id)%>
+					        <td><%= book.title%></td>  
+					        <td>
+					        	<% book.writers.each do |writer| %>
+					        	<%= writer.name %>
+					        	<% end %> 
+					        </td>
+					        <td><%= r.created_at %></td>
+					        <td><%= r.updated_at %></td>
+					        <td><%= link_to 'Show', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Edit', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					    </tr>
 				    	<% end %>
 				    <%else%>
 				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>

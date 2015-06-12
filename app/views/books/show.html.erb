@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<%= image_tag(@book.image(:medium)) %>
 <p>
   <strong>Title:</strong>
   <%= @book.title %>
@@ -7,8 +6,16 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @book.author %>
+  <% @book.writers.each do |writer| %>
+<%= writer.name %>
+<% end %>
+</p>
+<p>
+<%= @book.description %>
+<%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
+  <%= submit_tag("Book") %> 
+<% end %>
+
+
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
