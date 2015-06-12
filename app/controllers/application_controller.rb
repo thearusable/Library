@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
  	searching_reader_path(resource)
  end
  
+
 end

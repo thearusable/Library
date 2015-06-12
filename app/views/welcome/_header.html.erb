@@ -25,18 +25,18 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           	<ul class="nav navbar-nav nav-pills navbar-left">
-       		 <li> <%= link_to "Strona Główna", root_path, :class => 'mainLink'%> </li>
-       		 <li> <%= link_to "Nowości", newBooks_path, :class => 'mainLink'%> </li>
-       		 <li> <%= link_to "Informacje", about_path, :class => 'mainLink'%> </li>
+       		 <li> <%= link_to "Home", root_path, :class => 'mainLink'%> </li>
+       		 <li> <%= link_to "News", newBooks_path, :class => 'mainLink'%> </li>
+       		 <li> <%= link_to "About", about_path, :class => 'mainLink'%> </li>
       		</ul>
             <ul class="nav navbar-nav navbar-right">
             	<% if reader_signed_in? %> 
             		<p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
-        			<li> <%= link_to 'Edit profile', edit_reader_registration_path, :class => 'navbar-link' %> </li>
+        			<li> <%= link_to 'My account', searching_reader_path(current_reader), :class => 'navbar-link' %> </li>
         			<li> <%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'navbar-link'  %> </li>
       		<% else %>
-       			<li> <%= link_to "Zaloguj się", login_path %> </li>
-              	<li> <%= link_to "Zarejestruj się", register_path %> </li>
+       			<li> <%= link_to "Log in", login_path %> </li>
+              	<li> <%= link_to "Sign in", register_path %> </li>
       		<% end %>
             </ul>
           </div>

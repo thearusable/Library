@@ -27,7 +27,7 @@
               <% if reader_signed_in? %>
               <p class="whoIsLogged">Logged in as <strong><%= current_reader.email %></strong></p>
               <div class="logoutLink"><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></div>
-              <div class="editLink"><%= link_to 'Edit profile', edit_reader_registration_path, :class => 'links'%></div>
+              <div class="editLink"><%= link_to 'Edit profile', editProfile_reader_path, :class => 'links'%></div>
               <%end%>
               </div>
           </div>
@@ -36,11 +36,11 @@
             <div class="content">
               <ul class="menu">
                 <li class="small-3">
-                <%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'}, :class => 'active'%></li>
+                <%= link_to 'Searching', {controller: "readers", action: 'searching'}, :class => 'active'%></li>
                 <li class="small-3">
-                <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'}%></li>
+                <%= link_to 'My reservations', {controller: "readers", action: 'my_reservations'}%></li>
                 <li class="small-3">
-                <%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'}%></li>
+                <%= link_to 'My borrows', {controller: "readers", action: 'my_borrows'}%></li>
                 <li class="small-3">
                 <%= link_to 'Moje statystyki', {controller: "readers", action: 'my_statistics'}%>
                 </li>

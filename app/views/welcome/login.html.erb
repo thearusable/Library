@@ -2,16 +2,8 @@
 	<div class="log">
 		<div class="wrapper">
 			<h1>Zaloguj się!</h1>
-
-			<%= form_for(:reader, :url => session_path(:reader)) do |f| %>
-				<div><%= f.label :Email %>
-		  		<%= f.text_field :email %></div>
-		  		<div><%= f.label :Password %></div>
-		  		<div><%= f.password_field :password %></div>
-		  		<div class='checkbox'><%= f.label :remember_me %><%= f.check_box :remember_me %></div>
-		  		<div class="logButton"><%= f.submit 'Sign in', :class => 'btn btn-info' %></div>
-		  		<div class='forgetLink'><%= link_to "Forgot your password?", new_password_path(:reader) %></div>
-			<% end %>
+			<%= render 'devise/sessions/new' %>
+			
 		</div>
     </div>
 

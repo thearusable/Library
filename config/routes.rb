@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
   get 'login' => 'welcome#login'
   get 'register' => 'welcome#register'
+  get 'forgottenPassword' => 'welcome#passwordNewPage'
 
   resources :books
 
-  devise_for :readers do
-  	  root :to => "readers#reader"
-  end
+# devise_for :readers do
+#  	  root :to => "readers#reader"
+ # end
 
+  devise_for :readers, :controllers => {:passwords => "passwords"}
   devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -19,13 +21,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  
+ 
 
 #root 'application#index'
   #get 'readers/sign_in' => 'layouts#index'
  
  get 'reader/:id' => 'readers#searching'
-
+# get 'editProfile' => 'readers#editProfile'
  #get 'reader/:id/searching/:title' => 'books#searching'
 
   #get 'reader/:id/:title' => 'books#searching'
@@ -46,12 +48,14 @@ end
 		get 'searching'
 		get 'my_statistics'
     get 'booking'
+    get 'editProfile'
 	end
 end  
 
 
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
 get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
+#get 'readers/forgottenPassword' => 'readers#forgottenPassword'
 post 'books/:id/reserved' => 'books#reserved'
 
 
