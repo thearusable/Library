@@ -4,14 +4,17 @@
 		<div class = "pageContent">
 			<div class = "content">
 				<!--Formularz do wyszukiwania-->
-				<div class = "searchForm">
-					<%= form_tag searching_reader_path, :method => 'get', :class => 'searchBookForm' do %>
-			  			   <%= text_field_tag :title, params[:title], :class => 'searchField' %>
-			    		   <%= submit_tag "Search", :name => nil, :class => 'searchSubmit' %>
-					<% end %>
+				<div class="formHolder">
+					<div class = "searchForm">
+						<%= form_tag searching_reader_path, :method => 'get', :class => 'searchBookForm' do %>
+				  			   <%= text_field_tag :title, params[:title], :class => 'form-control' %>
+				    		   <%= submit_tag "Search", :name => nil, :class => 'btn btn-default' %>
+						<% end %>
+					</div>
 				</div>
 				<!--Wyświetlanie znalezionych książek-->
 				<div class = "booksTable">
+				<table>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
 						<% bookID = book.id %>
@@ -22,13 +25,14 @@
 					        	<%= writer.name %>
 					        	<% end %>
 					        </td>
-					        <td><%= link_to 'Show',{controller: 'books', action: 'show', id: bookID, readerID: current_reader} %></td></br>
+					        <td><%= link_to 'Show',{controller: 'books', action: 'show', id: bookID, readerID: current_reader} %></td>
 					       
 				      	</tr>
 				    	<% end %>
 				    <%else%>
 				    	<p>Nie znaleziono książek o podanym tytule!</p>
 			    	<% end %>
+			    	</table>
 		 		</div>
 		 	</div>
 		</div>

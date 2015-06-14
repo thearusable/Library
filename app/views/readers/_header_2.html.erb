@@ -22,19 +22,10 @@
             </a>
           </div>
           <!--Nagłówek-->
-          <div class="header">
-            <div class="content">
-              <% if reader_signed_in? %>
-              <p class="whoIsLogged">Logged in as <strong><%= current_reader.email %></strong></p>
-              <div class="logoutLink"><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></div>
-              <div class="editLink"><%= link_to 'Edit profile', editProfile_reader_path, :class => 'links'%></div>
-              <%end%>
-              </div>
-          </div>
+
           <!--Pasek z zakładkami-->
-          <div class="subheader">
-            <div class="content">
-              <ul class="menu">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav nav-pills navbar-left">
                 <li class="small-3">
                 <%= link_to 'Searching', {controller: "readers", action: 'searching'}, :class => 'active'%></li>
                 <li class="small-3">
@@ -45,5 +36,15 @@
                 <%= link_to 'Moje statystyki', {controller: "readers", action: 'my_statistics'}%>
                 </li>
               </ul>
+              <ul class="nav navbar-nav navbar-right">
+              <% if reader_signed_in? %> 
+                <p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
+              <li><%= link_to 'Edit profile', editProfile_reader_path, :class => 'links'%></li>
+              <li><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></li>
+          <% else %>
+            <li> <%= link_to "Log in", login_path %> </li>
+                <li> <%= link_to "Sign in", register_path %> </li>
+          <% end %>
+            </ul>
             </div>
-          </div>
+</div></div></nav>

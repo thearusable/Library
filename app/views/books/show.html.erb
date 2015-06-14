@@ -1,25 +1,25 @@
-<%= render 'header_2' %> 
-<%= image_tag(@book.image(:medium)) %>
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<%= render 'readers/header_2' %> 
+<div class="bookInfo">
+	<%= image_tag(@book.image(:medium)) %>
+	<p>
+	  <strong>Title:</strong>
+	  <%= @book.title %>
+	</p>
 
-<p>
-  <strong>Author:</strong>
-  <% @book.writers.each do |writer| %>
-<%= writer.name %>
-<% end %>
-</p>
-<p><strong>Category:</strong>
-	<%= Category.find(@book.category_id).name %>
-</p>
-<p>
-<%= @book.description %>
-<%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
-  <%= submit_tag("Book") %> 
-<% end %>
+	<p>
+	  <strong>Author:</strong>
+	  <% @book.writers.each do |writer| %>
+	<%= writer.name %>
+	<% end %>
+	</p>
+	<p><strong>Category:</strong>
+		<%= Category.find(@book.category_id).name %>
+	</p>
+	<p><strong>Description:</strong>
+	<%= @book.description %>
+	<%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
+	  <%= submit_tag "Book", :class => "btn btn-primary" %> 
+	<% end %>
+	</p>
 
-
-</p>
-
+</div>

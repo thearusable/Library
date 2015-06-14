@@ -6,7 +6,7 @@
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
 					<% if !@reservations.nil? %>
-					<th><td>Tytuł</td><td>Autor</td><td>Data utworzenia</td><td>Data aktualizacji</td></th>
+					<th>Tytuł</th><th>Autor</th><th>Data utworzenia</th><th>Data aktualizacji</th><th>&nbsp;</th><th>&nbsp;</th>
 						<% @reservations.each do |r| %>
 						<% reservationID = r.id %>
 				      	<tr>
