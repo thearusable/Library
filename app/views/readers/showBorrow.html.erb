@@ -1,6 +1,6 @@
 <div class="bookInfo">
 <%= render 'header_2' %> 
-	<% r = Reservation.find(params[:resID])%>
+	<% r = Reservation.find(params[:borrowID])%>
 
 	<% book = Book.find(r.book_id)%>
 		<%= image_tag(book.image(:medium)) %>
@@ -13,8 +13,9 @@
         <p>Description: <%= book.description %></p>
         <p>Created at: <%= r.created_at %></p>
         <p>Updated at: <%= r.updated_at %></p>
-        <p><%= link_to 'Back', my_reservations_reader_path %></p>
+        <p><%= link_to 'Back', my_borrows_reader_path %></p>
 </div>
+
 
 <%= render 'welcome/footer' %> 
 

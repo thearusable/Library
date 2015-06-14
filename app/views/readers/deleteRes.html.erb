@@ -14,6 +14,7 @@
         <p>Created at: <%= r.created_at %></p>
         <p>Updated at: <%= r.updated_at %></p>
         <p><%= link_to 'Back', my_reservations_reader_path %></p>
+        <p><%= submit_tag 'Delete', {controller: 'readers', action: 'confirmDeleting'}  %></p>
 </div>
 
 <%= render 'welcome/footer' %> 
