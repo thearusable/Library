@@ -21,9 +21,9 @@
 			<% book.current_reservation_id = res.id %>
 		
 			<%book.save%>
-	      	 <p>Książka została zarezerwowana</p>
+	      	 <p>Książka została zarezerwowana!</p>
 	<% else%>
-	      	 <p>Nie można zarezerwować książki!</p>
+	      	 <p>Ta książka jest już zarezerwowana!</p>
 	      	 
 	<% end%>
 

@@ -6,7 +6,7 @@
 				<!--Tabela z wypożyczonymi książkami-->
 				<table class='borrows'>
 					<% if !@borrows.nil? %>
-					<th><td>Tytuł</td><td>Autor</td><td>Data wypożyczenia</td><td>Data zwrotu</td></th>
+					<th>Tytuł</th><th>Autor</th><th>Data wypożyczenia</th><th>Data zwrotu</th><th></th>
 						<% @borrows.each do |b| %>
 						<% borrowID = b.id %>
 				      	<tr>
@@ -23,7 +23,7 @@
 					        <%else%>
 					        <td><%= b.returnedDate %></td>
 					        <%end%>
-					        <td><%= link_to 'Show', {controller: 'readers', action: 'booking', resID: borrowID} %></td>
+					        <td><%= link_to 'Show', {controller: 'readers', action: 'showBorrow', borrowID: borrowID} %></td>
 					    </tr>
 				    	<% end %>
 				    <%else%>
@@ -32,6 +32,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="footer"></div>
+		<div class="welcome/footer"></div>
 	</body>
 </html>

@@ -1,11 +1,12 @@
 class ReadersController < InheritedResources::Base
 	before_action :authenticate_reader!
   
-   def booking
+   def showBorrow
    end
     
     def searching
        @books = Book.where( 'title LIKE ?', "%#{params[:title]}%")
+     
     end
     def my_reservations
         @reservations = Reservation.where({reader_id: params[:id], received: false})  
@@ -15,8 +16,13 @@ class ReadersController < InheritedResources::Base
       @borrows = Reservation.where({reader_id: params[:id], received: true})
     end
 
-    def my_statistics
-    end
+   def deleteRes
+   end
+
+   def confirmDeleting
+    @delRes = Reservation.find(params[:resID])
+    @delRes.destroy
+   end
     
       helper_method :resource, :resource_name, :devise_mapping
   def resource_name
@@ -35,6 +41,7 @@ class ReadersController < InheritedResources::Base
   end
     #def editProfile
    # end
+  
 
   private
     def reader_params

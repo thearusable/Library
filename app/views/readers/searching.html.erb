@@ -15,6 +15,7 @@
 				<!--Wyświetlanie znalezionych książek-->
 				<div class = "booksTable">
 				<table>
+					<th>Tytuł</th><th>Autor</th><th></th>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
 						<% bookID = book.id %>
@@ -26,8 +27,7 @@
 					        	<% end %>
 					        </td>
 					        <td><%= link_to 'Show',{controller: 'books', action: 'show', id: bookID, readerID: current_reader} %></td>
-					       
-				      	</tr>
+					    </tr>
 				    	<% end %>
 				    <%else%>
 				    	<p>Nie znaleziono książek o podanym tytule!</p>
@@ -36,4 +36,4 @@
 		 		</div>
 		 	</div>
 		</div>
-<%= render 'footer_2' %>
+<%= render 'welcome/footer' %>

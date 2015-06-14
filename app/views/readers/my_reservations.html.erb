@@ -20,7 +20,7 @@
 					        <td><%= r.created_at %></td>
 					        <td><%= r.updated_at %></td>
 					        <td><%= link_to 'Show', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
-					        <td><%= link_to 'Edit', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    </tr>
 				    	<% end %>
 				    <%else%>
@@ -29,6 +29,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="footer"></div>
+		<div class="welcome/footer"></div>
 	</body>
 </html>

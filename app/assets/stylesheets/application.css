@@ -3,13 +3,14 @@ html,body{
 }
 
 body { 
-	padding-top: 70px;
+	padding-top: 50px;
 	font-family: 'Open Sans', sans-serif;
 }
 
 .navbar {
 	background: #000;
 	box-shadow: 8px 0 4px #888888;
+	margin-bottom: 0;
 }
 
 .footer {
@@ -17,6 +18,12 @@ body {
 	height: 40px;
 	background: #000;
 	box-shadow: -8px 0 4px #888888;
+}
+
+.mainPicture {
+	width: 960px;
+	height: 200px;
+	margin: 0 auto;
 }
 
 ul.nav li a.mainLink {
@@ -92,6 +99,7 @@ ul.nav li a.mainLink {
 	width: 400px;
 	margin: 0 auto;
 	overflow: auto;
+	margin-top: 50px;
 }
 .searchForm input{
 	width: 200px;

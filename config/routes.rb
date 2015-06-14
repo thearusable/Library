@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get 'forgottenPassword' => 'welcome#passwordNewPage'
 
   resources :books
-
+   get 'newBooks/:id' => 'books#show'
 # devise_for :readers do
 #  	  root :to => "readers#reader"
  # end
+resources :reservations
 
   devise_for :readers, :controllers => {:passwords => "passwords"}
   devise_for :librarians, ActiveAdmin::Devise.config
@@ -55,6 +56,8 @@ end
 
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
 get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
+
+get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 #get 'readers/forgottenPassword' => 'readers#forgottenPassword'
 post 'books/:id/reserved' => 'books#reserved'
 
