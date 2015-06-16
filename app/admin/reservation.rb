@@ -49,7 +49,9 @@ ActiveAdmin.register Reservation do
     #update - do poprawy 
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Szczegóły Rezerwacji" do
+      f.input :receivedDate, :as => :datepicker, :label => "Data Odebrania Książki."
       f.input :received, :label => "Odebrano?"
+      f.input :returnedDate, :as => :datepicker, :label => "Data Zwrócenia Książki."
       f.input :returned, :label => "Zwrócono?"
       end
       f.actions
