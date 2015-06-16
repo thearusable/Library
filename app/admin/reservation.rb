@@ -1,6 +1,6 @@
 ActiveAdmin.register Reservation do
 
-  menu priority: 2
+  menu priority: 1
 
   permit_params :received, :returned, :receivedDate, :returnedDate
 

@@ -1,6 +1,6 @@
 ActiveAdmin.register Book do
 
-    menu prority: 3
+    menu prority: 2
 
     permit_params :title, :image, :publishingHouse, :ISBN, :releaseDate,  :description
 
