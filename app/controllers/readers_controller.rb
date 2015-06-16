@@ -23,11 +23,13 @@ class ReadersController < InheritedResources::Base
     @delRes = Reservation.find(params[:resID])
     @delRes.destroy
    end
+  
+
     
-      helper_method :resource, :resource_name, :devise_mapping
+  helper_method :resource, :resource_name, :devise_mapping
   def resource_name
       :reader
-    end
+  end
  
   def resource
     @resource ||= Reader.new
@@ -39,9 +41,6 @@ class ReadersController < InheritedResources::Base
 
   def forgottenPassword
   end
-    #def editProfile
-   # end
-  
 
   private
     def reader_params

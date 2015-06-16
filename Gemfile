@@ -37,7 +37,7 @@ gem 'devise' , '3.4.1'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_skin'
 
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", "~> 4.2"
 
 gem 'rmagick', '~> 2.15.0'
 

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+
+  devise_for :readers, :controllers => {:passwords => "passwords"}
 
   get 'newBooks' => 'welcome#newBooks'
   get 'about' => 'welcome#about'
@@ -8,39 +11,12 @@ Rails.application.routes.draw do
 
   resources :books
    get 'newBooks/:id' => 'books#show'
-# devise_for :readers do
-#  	  root :to => "readers#reader"
- # end
-resources :reservations
 
-  devise_for :readers, :controllers => {:passwords => "passwords"}
-  devise_for :librarians, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  resources :reservations
 
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  # You can have the root of your site routed with "root"
   root 'welcome#index'
  
-
-#root 'application#index'
-  #get 'readers/sign_in' => 'layouts#index'
- 
  get 'reader/:id' => 'readers#searching'
-# get 'editProfile' => 'readers#editProfile'
- #get 'reader/:id/searching/:title' => 'books#searching'
-
-  #get 'reader/:id/:title' => 'books#searching'
- # get '/librarian/:id' => 'librarians#librarian'
- # get '/reader/params[:title]' => 'books#searching'
-
-=begin resources :books do
-	collection do
-		get 'searching'
-	end
-end
-=end
 
  resources :readers do
 	member do 
@@ -62,58 +38,7 @@ get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 post 'books/:id/reserved' => 'books#reserved'
 
 
-#match 'searching' => 'book#searching', :as => 'searching'
-#map.connect 'readers/:id/searching', :controller => 'books', :action => 'searching'
+  devise_for :librarians, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
-#get 'reader/my_statistics' => 'readers#my_statistisc'
-#get 'reader/searching' => 'readers#reader'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
