@@ -4,7 +4,7 @@ ActiveAdmin.register Category do
 
 	filter :name, :label => "Nazwa Kategorii"
 
-  actions :index, :new, :create, :update, :edit
+  actions :index, :new, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false

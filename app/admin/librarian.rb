@@ -26,7 +26,9 @@ ActiveAdmin.register Librarian do
 
 	#index
     index do
-      column "Imię i Nazwisko", :name
+      column "Imię i Nazwisko" do |l|
+        link_to l.name, edit_admin_librarian_path(l)
+      end
       column "Email", :email
       column "Administrator?", :admin
       column "Ostatnie Logowanie", :last_sign_in_at

@@ -1,6 +1,6 @@
 ActiveAdmin.setup do |config|
   
-  config.site_title = "Library"
+  config.site_title = "lib15"
   config.comments = false
 
   config.authentication_method = :authenticate_librarian!

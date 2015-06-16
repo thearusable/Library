@@ -1,6 +1,7 @@
 ActiveAdmin.register Review do
 
-  menu priority: 2
+  #menu priority: 2
+  menu false
 
   permit_params :score, :comment, :book_id, :reader_id
 
@@ -53,11 +54,11 @@ ActiveAdmin.register Review do
       column "Ocena", :score
       column "Komentarz", :comment
       column "Książka" do |r|
-  		link_to Book.find(r.book_id).title, admin_book_path(r.book_id)
+  		link_to Book.find(r.book_id).title, edit_admin_book_path(r.book_id)
 	  end 
 	  column "Czytelnik" do |r|
   		obj = Reader.find(r.reader_id)
-  		link_to obj.name, admin_reader_path(obj)
+  		link_to obj.name, edit_admin_reader_path(obj)
 	  end 
       column "Data Aktualizacji", :updated_at
       actions

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  devise_for :librarians, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   devise_for :readers, :controllers => {:passwords => "passwords"}
 
@@ -38,7 +39,6 @@ get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 post 'books/:id/reserved' => 'books#reserved'
 
 
-  devise_for :librarians, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  
 
 end
