@@ -8,15 +8,3 @@ has_attached_file :image, :styles => { :normal => "512x512", :medium => "238x238
 validates_attachment :image, content_type: { content_type:     ["image/jpg", "image/jpeg", "image/png"] }
 
 end
-
-
-
-
-
-
-
-=begin
-def self.search(query)
-	where("title like?", "%#{query}%")
-end
-=end

@@ -1,6 +1,6 @@
 ActiveAdmin.register Reservation do
 
-  menu priority: 0
+  menu priority: 2
 
   permit_params :received, :returned, :receivedDate, :returnedDate
 
@@ -28,7 +28,7 @@ ActiveAdmin.register Reservation do
 
 	#index
     index do
-      column "Książka" do |r|
+      column "Książka"  do |r|
         if r.book_id?
           b = Book.find(r.book_id)
           link_to b.title, edit_admin_book_path(b)
