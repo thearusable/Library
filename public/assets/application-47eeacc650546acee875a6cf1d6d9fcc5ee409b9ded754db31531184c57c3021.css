@@ -1,4 +1,5 @@
 /* Style strony głównej, nagłówka i stopki*/
+
 html,body{
 	min-height: 800px !important;
 }
@@ -27,7 +28,9 @@ body {
 	position: fixed;
 	bottom: 1px;
 	left: 50%;
-	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
 	width:100%;
 }
 .mainPicture {
@@ -44,7 +47,9 @@ body {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	background: rgba(0, 0, 0, 0.3);
 	width: 500px;
 	padding: 30px;
@@ -123,7 +128,9 @@ ul.nav li a.mainLink:hover {
 	width: 20%;
 	position: relative;
 	left: 50%;
-	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
 }
 .log .wrapper h2, .editProfile .wrapper h2{
   	margin: 50px 0;
@@ -247,6 +254,8 @@ table tr:nth-child(odd){
   display: block;
   position: relative;
   left: 25%;
-  transform: translateX(-30%);
+  -webkit-transform: translateX(-30%);
+      -ms-transform: translateX(-30%);
+          transform: translateX(-30%);
   float: none;
 }
