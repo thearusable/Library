@@ -1,8 +1,7 @@
 <%= render 'header_2' %> 
 		<!--Zawartość podstrony-->
-		<div class="pageContent">
-			<div class="content">
-				<h2 class='myResHeader'>Moje rezerwacje</h2>
+		<div class="container">
+				<h3 class='myResHeader'>Moje rezerwacje</h3>
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
 					<% if !@reservations.nil? %>
@@ -19,16 +18,12 @@
 					        </td>
 					        <td><%= r.created_at %></td>
 					        <td><%= r.updated_at %></td>
-					        <td><%= link_to 'Show', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
-					        <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					        <td><%= link_to 'Pokaż', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Usuń', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    </tr>
 				    	<% end %>
-				    <%else%>
-				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+				   
 			    	<% end %>
 				</table>
-			</div>
 		</div>
-		<div class="welcome/footer"></div>
-	</body>
-</html>
+<%= render 'welcome/footer' %>

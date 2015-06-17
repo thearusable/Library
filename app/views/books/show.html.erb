@@ -1,27 +1,18 @@
-<%= render 'readers/header_2' %> 
-<div class="bookInfo">
-	<%= image_tag(@book.image(:medium)) %>
-	<p>
-	  <strong>Title:</strong>
-	  <%= @book.title %>
-	</p>
 
-	<p>
-	  <strong>Author:</strong>
-	  <% @book.writers.each do |writer| %>
-	<%= writer.name %>
-	<% end %>
-	</p>
-	<p><strong>Category:</strong>
-		<%= Category.find(@book.category_id).name %>
-	</p>
-	<p><strong>Description:</strong>
-	<%= @book.description %>
-	<%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
-	  <%= submit_tag "Book", :class => "btn btn-primary" %> 
-	<% end %>
-	</p>
-	<p><%= link_to 'Back', searching_reader_path%></p>
+	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+	<table>
+	  <tr><th>Title:</th><td><%= @book.title %></td></tr>
+	  <tr><th>Author:</th><td><% @book.writers.each do |writer| %>
+							  <%= writer.name %>
+							  <% end %>
+					 </td></tr>
+	  <tr><th>Category:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+	  <tr><th>Description:</th><td><%= @book.description %></td></tr>
+	  </table>
+	  <%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
+	  		<%= submit_tag "Book", :class => "btn btn-primary" %> 
+	  <% end %>
+	
+	<p><%= link_to 'Powrót', searching_reader_path, :class => 'bookButton' %></p>
 
-</div>
-<%= render 'welcome/footer' %> 
+

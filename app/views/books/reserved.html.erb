@@ -1,34 +1,24 @@
+<%= render 'readers/header_2' %> 
 <div class="bookInfo">
-<%= image_tag(@book.image(:medium)) %>
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <% @book.writers.each do |writer| %>
-<%= writer.name %>
-<% end %>
-</p>
-<p>
-<%= @book.description %>
-  <% if params[:commit] == "Book"%>
-	<% if @book.current_reservation_id == nil%>
-	     <% res = Reservation.create({:reader_id => params[:readerID], :book_id => params[:id], :received => false, :returned => false})%>
-			
-			<% book = Book.find(params[:id])%>
-			<% book.current_reservation_id = res.id %>
-		
-			<%book.save%>
-	      	 <p>Książka została zarezerwowana!</p>
-	<% else%>
-	      	 <p>Ta książka jest już zarezerwowana!</p>
-	      	 
-	<% end%>
-
-<% end %>
-
-
-</p>
+	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+	<table class="resBorTable">
+		<tr><th>Title:</th><td><%= @book.title %></td></tr>
+		<tr><th>Author:</th><td><% @book.writers.each do |writer| %>
+								<%= writer.name %>
+								<% end %>
+					   </td></tr>
+		<tr><th>Description:</th><td><%= @book.description %> </td></tr>
+	</table>
+	  <% if params[:commit] == "Book"%>
+		<% if @book.current_reservation_id == nil%>
+		     <% res = Reservation.create({:reader_id => params[:readerID], :book_id => params[:id], :received => false, :returned => false})%>
+			 <% book = Book.find(params[:id])%>
+			 <% book.current_reservation_id = res.id %>
+		   	 <%book.save%>
+		      	 <p class='success'>Książka została zarezerwowana!</p>
+		<% else%>
+		      	 <p class='fail'>Ta książka jest już zarezerwowana!</p>
+		<% end%>
+       <% end %>
 </div>
+<%= render 'welcome/footer' %> 

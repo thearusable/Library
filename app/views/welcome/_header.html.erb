@@ -25,22 +25,23 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           	<ul class="nav navbar-nav nav-pills navbar-left">
-       		 <li> <%= link_to "Home", root_path, :class => 'mainLink'%> </li>
-       		 <li> <%= link_to "News", newBooks_path, :class => 'mainLink'%> </li>
-       		 <li> <%= link_to "About", about_path, :class => 'mainLink'%> </li>
-      		</ul>
+           		 <li> <%= link_to "Home", root_path, :class => 'mainLink'%> </li>
+           		 <li> <%= link_to "Nowe propozycje", '/#newBooks', :class => 'mainLink'%> </li>
+           		 <li> <%= link_to "O nas", '/#about', :class => 'mainLink'%> </li>
+      		  </ul>
             <ul class="nav navbar-nav navbar-right">
-            	<% if reader_signed_in? %> 
-            		<p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
-        			<li> <%= link_to 'My account', searching_reader_path(current_reader), :class => 'navbar-link' %> </li>
-        			<li> <%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'navbar-link'  %> </li>
-      		<% else %>
-       			<li> <%= link_to "Log in", login_path %> </li>
-              	<li> <%= link_to "Sign in", register_path %> </li>
-      		<% end %>
+              	<% if reader_signed_in? %> 
+                	<p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
+            			<li> <%= link_to 'Moje konto', searching_reader_path(current_reader), :class => 'mainLink' %> </li>
+            			<li> <%= link_to "Wyloguj", destroy_reader_session_path, method: :delete, :class => 'mainLink'  %> </li>
+      		      <% else %>
+         			    <li> <%= link_to "Zaloguj", login_path, :class => 'mainLink' %> </li>
+                	<li> <%= link_to "Zarejestruj się", register_path, :class => 'mainLink' %> </li>
+      		      <% end %>
             </ul>
           </div>
         </div>
       </div>
     </nav>
-
+    <div class="pageContent">
+  

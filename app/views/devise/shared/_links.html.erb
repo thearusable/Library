@@ -1,13 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", login_path %>
+  <%= link_to "Zaloguj się", login_path %>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", register_path %>
+  <%= link_to "Zarejestruj się", register_path %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", forgottenPassword_path %>
+  <%= link_to "Zapomniałeś hasła?", forgottenPassword_path %>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

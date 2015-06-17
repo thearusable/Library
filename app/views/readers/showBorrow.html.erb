@@ -1,19 +1,27 @@
-<div class="bookInfo">
 <%= render 'header_2' %> 
+<div class="bookInfo">
+
 	<% r = Reservation.find(params[:borrowID])%>
 
 	<% book = Book.find(r.book_id)%>
-		<%= image_tag(book.image(:medium)) %>
-		<p>Title: <%= book.title%></p>
-        <p>Author: <% book.writers.each do |writer| %>
-        	<%= writer.name %>
-        	<% end %> 
-        </p>
-        <p>Category: <%= Category.find(book.category_id).name %></p>
-        <p>Description: <%= book.description %></p>
-        <p>Created at: <%= r.created_at %></p>
-        <p>Updated at: <%= r.updated_at %></p>
-        <p><%= link_to 'Back', my_borrows_reader_path %></p>
+		<%= image_tag(book.image(:medium), :class => 'bookImage') %>
+                <table class="reaBorTable">
+        		        <tr><th>Tytuł:</th><td><%= book.title%></td></tr>
+                        <tr><th>Autor:</th><td><% book.writers.each do |writer| %>
+                                        	<%= writer.name %>
+                                        	<% end %> 
+                                       </td></tr>
+                        <tr><th>Kategoria:</th><td><%= Category.find(book.category_id).name %></td></tr>
+                        <tr><th>Opis:</th><td><%= book.description %></td></tr>
+                        <tr><th>Data wypożyczenia:</th><td><%= r.receivedDate %></td></tr>
+                        <tr><th>Zwrócono:</th>
+                            <%if r.returnedDate==nil%>
+                                <td>Aktualnie w wypożyczeniu</td>
+                            <%else%>
+                                <td><%= r.returnedDate %></td>
+                            <%end%>
+                </table>
+        <p><%= link_to 'Powrót', my_borrows_reader_path %></p>
 </div>
 
 
