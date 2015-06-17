@@ -3,9 +3,12 @@ html,body{
 	min-height: 800px !important;
 }
 body { 
-	padding-top: 50px;
+	padding: 50px 0;
 	font-family: 'Open Sans', sans-serif;
 	background: #ecf0f1;
+}
+.pageContent {
+	width: 100%;
 }
 .container {
 	width: 960px;
@@ -15,35 +18,39 @@ body {
 	background: #000;
 	box-shadow: 8px 0 4px #888888;
 	margin-bottom: 0;
+	width: 100%;
 }
 .footer {
-	width: 100%;
-	height: 40px;
+	height: 50px;
 	background: #000;
 	box-shadow: -8px 0 4px #888888;
 	position: fixed;
 	bottom: 1px;
 	left: 50%;
 	transform: translateX(-50%);
+	width:100%;
 }
 .mainPicture {
 	width: 100%;
 	min-height: 580px;
-	background: url("book.png") no-repeat;
-	background-size: contain;
+	background: url("library.jpg") no-repeat;
+	background-size: cover;
 	display: inline-block;
 	margin-top: -50px;
 }
 .mainPicture .welcomeText {
 	font-weight: 700;
 	text-align: center;
-	width: 400px;
-	margin: 0 auto;
-	padding: 20px;
-	margin-top: 70px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgb(0, 0, 0, 0.7);
+	width: 500px;
+	padding: 30px;
 	border: 7px solid black;
-	color: #000;
-	font-size: 20px;
+	color: #fff;
+	font-size: 23px;
 }
 ul.nav li a.mainLink {
 	text-decoration: none;
@@ -56,8 +63,14 @@ ul.nav li a.mainLink:hover {
 	text-align: center;
 	margin: 8px 0 0 5px;
 }
+#newBooks {
+	margin-top: -5px;
+	background: url("halftone.png");
+	width: 100%;
+}
 .indexSection {
-	background: #0C0848;
+	background: #000;
+	padding: 5px 0;
 }
 .indexSection h4 {
 	display: block;
@@ -66,6 +79,13 @@ ul.nav li a.mainLink:hover {
 	text-align: center;
 	padding: 7px;
 	color: #fff;
+}
+#about {
+	background: url("halftone.png");
+}
+#about .container {
+	margin: 20px auto;
+	text-align: center;
 }
 
 /* Style do komunikatów */
@@ -147,7 +167,7 @@ ul.nav li a.mainLink:hover {
 }
 .newBooks, .booksTable, .reservations, .borrows {
 	width: 100%;
-	margin-top: 40px;
+	margin: 40px 0;
 }
 .myBorrHeader, .myResHeader {
 	font-weight: 700;
@@ -180,12 +200,22 @@ table tr:nth-child(odd){
 .resBorTable td {
 	max-width: 500px;
 }
+.bookInfo {
+	margin-top: 150px;
+}
 .bookInfo div {
 	clear: both;
-	margin-top: 50px;
+	
+}
+.resForm {
+	clear: both;
 }
 .bookButton {
-	margin-top: 20px;
+	margin-top: 80px;
+}
+.backLink {
+	margin-top: 80px;
+	display: block;
 }
 .bookInfo .fail, .bookInfo .success {
 	text-align: center;
@@ -202,10 +232,17 @@ table tr:nth-child(odd){
 	width: 100%;
 	margin: 50px auto;
 }
-
 .editProfile .cancelAcc {
 
 }
 
-.cancelAcc{margin-left: 194px;}
-
+.cancelAcc {
+  /* margin-left: 354px; */
+  width: 438px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  left: 25%;
+  transform: translateX(-30%);
+  float: none;
+}

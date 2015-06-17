@@ -6,7 +6,7 @@
 	<% book = Book.find(r.book_id)%>
 		<%= image_tag(book.image(:medium), :class => 'bookImage') %>
                 <table class="reaBorTable">
-        		<tr><th>Tytuł:</th><td><%= book.title%></td></tr>
+        		        <tr><th>Tytuł:</th><td><%= book.title%></td></tr>
                         <tr><th>Autor:</th><td><% book.writers.each do |writer| %>
                                         	<%= writer.name %>
                                         	<% end %> 

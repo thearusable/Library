@@ -25,23 +25,26 @@
 
           <!--Pasek z zakładkami-->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav nav-pills navbar-left">
-                <li class="small-3">
-                <%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'}, :class => 'mainLink'%></li>
-                <li class="small-3">
-                <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'}, :class => 'mainLink'%></li>
-                <li class="small-3">
-                <%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'}, :class => 'mainLink'%></li>
+              <ul class="nav navbar-nav nav-pills navbar-left">
+                  <li class="small-3">
+                  <%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'}, :class => 'mainLink'%></li>
+                  <li class="small-3">
+                  <%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'}, :class => 'mainLink'%></li>
+                  <li class="small-3">
+                  <%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'}, :class => 'mainLink'%></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-              <% if reader_signed_in? %> 
-                <p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
-              <li><%= link_to 'Edytuj profil', editProfile_reader_path, :class => 'mainLink'%></li>
-              <li><%= link_to "Wyloguj", destroy_reader_session_path, method: :delete, :class => 'mainLink'%></li>
-          <% else %>
-            <li> <%= link_to "Zaloguj", login_path %> </li>
-                <li> <%= link_to "Zarejestruj się", register_path %> </li>
-          <% end %>
-            </ul>
-            </div>
-</div></div></nav>
+                  <% if reader_signed_in? %> 
+                    <p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
+                    <li><%= link_to 'Edytuj profil', editProfile_reader_path, :class => 'mainLink'%></li>
+                    <li><%= link_to "Wyloguj", destroy_reader_session_path, method: :delete, :class => 'mainLink'%></li>
+                  <% else %>
+                    <li> <%= link_to "Zaloguj", login_path %> </li>
+                    <li> <%= link_to "Zarejestruj się", register_path %> </li>
+                  <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="pageContent">

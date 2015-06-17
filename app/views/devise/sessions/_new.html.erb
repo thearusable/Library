@@ -1,13 +1,13 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <div class="form-group">
-    <%= f.label :email %>
+    <%= f.label :Email %>
     <div>
         <%= f.email_field :email, :value => "reader@example.com", autofocus: true , class: "form-control" %>
     </div>
 </div>
 
 <div class="form-group">
-    <%= f.label :password %>
+    <%= f.label :Hasło %>
     <div>
         <%= f.password_field :password, :value => "password", autocomplete: "off", class: "form-control" %>
     </div>
