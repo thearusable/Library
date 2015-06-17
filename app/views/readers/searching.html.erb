@@ -1,20 +1,19 @@
 <%= render 'header_2' %> 
 		
 		<!--Zawartość podstrony-->
-		<div class = "pageContent">
-			<div class = "content">
+		<div class = "container">
 				<!--Formularz do wyszukiwania-->
 				<div class="formHolder">
 					<div class = "searchForm">
 						<%= form_tag searching_reader_path, :method => 'get', :class => 'searchBookForm' do %>
 				  			   <%= text_field_tag :title, params[:title], :class => 'form-control' %>
-				    		   <%= submit_tag "Search", :name => nil, :class => 'btn btn-default' %>
+				    		   <%= submit_tag "Szukaj", :name => nil, :class => 'btn btn-default' %>
 						<% end %>
 					</div>
 				</div>
 				<!--Wyświetlanie znalezionych książek-->
-				<div class = "booksTable">
-				<table>
+				<div>
+				<table class = "booksTable">
 					<th>Tytuł</th><th>Autor</th><th></th>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
@@ -26,7 +25,7 @@
 					        	<%= writer.name %>
 					        	<% end %>
 					        </td>
-					        <td><%= link_to 'Show',{controller: 'books', action: 'show', id: bookID, readerID: current_reader} %></td>
+					        <td><%= link_to 'Pokaż',{controller: 'readers', action: 'showBook', id_book: bookID} %></td>
 					    </tr>
 				    	<% end %>
 				    <%else%>
@@ -34,6 +33,5 @@
 			    	<% end %>
 			    	</table>
 		 		</div>
-		 	</div>
 		</div>
 <%= render 'welcome/footer' %>

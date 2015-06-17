@@ -1,69 +1,92 @@
+/* Style strony głównej, nagłówka i stopki*/
 html,body{
 	min-height: 800px !important;
 }
-
 body { 
 	padding-top: 50px;
 	font-family: 'Open Sans', sans-serif;
+	background: #ecf0f1;
 }
-
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
 .navbar {
 	background: #000;
 	box-shadow: 8px 0 4px #888888;
 	margin-bottom: 0;
 }
-
 .footer {
 	width: 100%;
 	height: 40px;
 	background: #000;
 	box-shadow: -8px 0 4px #888888;
-}
-
-.mainPicture {
-	width: 960px;
-	height: 200px;
-	margin: 0 auto;
-}
-
-ul.nav li a.mainLink {
-	text-decoration: none;
-}
-
-
-.footer .text-muted {
-	text-align: center;
-	margin: 8px 0 0 5px;
-}
-
-.footer {
 	position: fixed;
 	bottom: 1px;
 	left: 50%;
 	transform: translateX(-50%);
 }
+.mainPicture {
+	width: 100%;
+	min-height: 580px;
+	background: url("book.png") no-repeat;
+	background-size: contain;
+	display: inline-block;
+	margin-top: -50px;
+}
+.mainPicture .welcomeText {
+	font-weight: 700;
+	text-align: center;
+	width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	margin-top: 70px;
+	border: 7px solid black;
+	color: #000;
+	font-size: 20px;
+}
+ul.nav li a.mainLink {
+	text-decoration: none;
+	color: #fff;
+}
+ul.nav li a.mainLink:hover {
+	color: #6090db;
+}
+.footer .text-muted {
+	text-align: center;
+	margin: 8px 0 0 5px;
+}
+.indexSection {
+	background: #0C0848;
+}
+.indexSection h4 {
+	display: block;
+	margin: 0;
+	font-weight: 700;
+	text-align: center;
+	padding: 7px;
+	color: #fff;
+}
 
+/* Style do komunikatów */
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
  }
-
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
  }
-
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
  }
-
 .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
@@ -71,25 +94,27 @@ ul.nav li a.mainLink {
     text-align: left;
  }
 
+/*LOGG*/
 
- /*LOGG*/
-
-.log .wrapper{
+.form-horizontal {
+	margin: 0 auto;
+}
+.log .wrapper {
 	width: 20%;
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
 }
-.log .wrapper h2{
-	margin-top: 50px;
-  display: block;
-  text-align: center;
+.log .wrapper h2, .editProfile .wrapper h2{
+  	margin: 50px 0;
+  	display: block;
+  	text-align: center;
 }
-.log .wrapper .links-f a{
+.log .wrapper .links-f a {
 	display: block;
 	padding-left: 25px;
 }
-.log .wrapper .links-f{
+.log .wrapper .links-f {
 	margin-left: -40px;
 }
 .formHolder{
@@ -109,39 +134,77 @@ ul.nav li a.mainLink {
 .searchForm input[type="submit"]{
 	width: 100px;
 }
-
-table{
-	margin: 50px auto;
+.container .form-group {
+	padding-left: 25%;
+}
+.form-group .control-label {
+	text-align: left;
+	width: 150px;
+}
+.form-group i {
+	display: inline-block;
+	font-size: 12px;
+}
+.newBooks, .booksTable, .reservations, .borrows {
+	width: 100%;
+	margin-top: 40px;
+}
+.myBorrHeader, .myResHeader {
+	font-weight: 700;
+	margin-top: 30px;
+	text-align: center;
 }
 table tr th {
 	background: rgba(0,0,0,0.8);
 	color: #fff;
 	font-weight: bold;
-	padding:20px; 
+	padding: 10px 15px 10px 15px; 
 }
 table tr td{
-	 padding:20px;  
+	 padding:15px;  
 }
 table tr:nth-child(odd){
 	background: rgba(0,0,0,0.1);
 }
-
 .bookInfo{
-	width: 400px;
-	margin: 0 auto;
+	width: 800px;
+	margin: 150px auto;
 }
-.myResHeader, .myBorrHeader{
+.bookImage {
+	padding-right: 80px;
+	float: left;
+}
+.detailTable {
+	float: left;
+}
+.resBorTable td {
+	max-width: 500px;
+}
+.bookInfo div {
+	clear: both;
+	margin-top: 50px;
+}
+.bookButton {
+	margin-top: 20px;
+}
+.bookInfo .fail, .bookInfo .success {
 	text-align: center;
+	display: block;
+	margin-top: 20px;
 }
-
-.editProfile{
-	width: 80%;
+.fail {
+	color: #8E130B;
+}
+.success {
+	color: #296E0E;
+}
+.editProfile {
+	width: 100%;
 	margin: 50px auto;
 }
 
-.editProfile h1{
-	text-align: center;
-	margin: 50px 0;
+.editProfile .cancelAcc {
+
 }
 
 .cancelAcc{margin-left: 194px;}

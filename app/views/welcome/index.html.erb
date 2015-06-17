@@ -1,8 +1,39 @@
 <%= render 'header' %>
-	<div class="container">
-		<div class="mainPicture">
-			<%=image_tag "library3.png"%>
+		
+		<div class="container">
+			<div class="mainPicture">
+				<div class='welcomeText'>Witaj w naszej bibliotece!</div>
+			</div>
 		</div>
-		<%= yield %>
-	</div>
+		<!--Sekcja nowych książek-->
+		<div id="newBooks">
+			<div class="indexSection">
+					<h4>Najnowsze pozycje!</h4>
+			</div>
+			<div class="container">
+				<div class="table-responsive">
+			        <table class="newBooks">
+			        <th></th><th>Tytuł</th><th>Autor</th><th></th>
+			        <% if !@books.nil? %>
+			          <% @books.each do |book| %>
+			            <tr>
+			                <td><%= image_tag(book.image(:thumb)) %></td>
+			                <td><%= book.title %></td>
+			                <td><% book.writers.each do |writer| %>
+			                <%= writer.name %><% end %></td>
+			                <td><%= link_to 'Show',{controller: 'books', action: 'show', id: book.id } %></td>
+			            </tr>
+			          <% end %>
+			         <% end %>
+			        </table>
+			     </div>
+			</div>
+		</div>
+		<!--Sekcja "O nas"-->
+		<div id="about">
+			<div class="indexSection">
+				<h4>O nas!</h4>
+			</div>
+		</div>
+	
 <%= render 'footer' %>

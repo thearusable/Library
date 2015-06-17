@@ -1,0 +1,18 @@
+
+	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+	<table>
+	  <tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
+	  <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
+							  <%= writer.name %>
+							  <% end %>
+					 </td></tr>
+	  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+	  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+	  </table>
+	  <%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID]) do %>
+	  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary" %> 
+	  <% end %>
+	
+	<p><%= link_to 'Powrót', searching_reader_path, :class => 'bookButton' %></p>
+
+

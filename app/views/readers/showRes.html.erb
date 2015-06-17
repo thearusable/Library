@@ -1,19 +1,23 @@
-<div class="bookInfo">
 <%= render 'header_2' %> 
-	<% r = Reservation.find(params[:resID])%>
+<div class="bookInfo">
 
+	<% r = Reservation.find(params[:resID])%>
+      
 	<% book = Book.find(r.book_id)%>
-		<%= image_tag(book.image(:medium)) %>
-		<p>Title: <%= book.title%></p>
-        <p>Author: <% book.writers.each do |writer| %>
-        	<%= writer.name %>
-        	<% end %> 
-        </p>
-        <p>Category: <%= Category.find(book.category_id).name %></p>
-        <p>Description: <%= book.description %></p>
-        <p>Created at: <%= r.created_at %></p>
-        <p>Updated at: <%= r.updated_at %></p>
-        <p><%= link_to 'Back', my_reservations_reader_path %></p>
+                <div class="bookImage"><%= image_tag(book.image(:medium)) %></div>
+                <div class="detailTable">
+                        <table class="resBorTable">
+                        	<tr><th>Tytuł:</th><td><%= book.title%></td></tr>
+                                <tr><th>Autor:</th><td><% book.writers.each do |writer| %>
+                                                	<%= writer.name %>
+                                                	<% end %> 
+                                                </td></tr>
+                                <tr><th>Kategoria:</th><td><%= Category.find(book.category_id).name %></td></tr>
+                                <tr><th>Opis:</th><td><%= book.description %></td></tr>
+                                <tr><th>Utworzono:</th><td><%= r.created_at %></td></tr>
+                        </table>
+                </div>
+                <div><%= link_to 'Powrót', my_reservations_reader_path %></div>
 </div>
 
 <%= render 'welcome/footer' %> 
