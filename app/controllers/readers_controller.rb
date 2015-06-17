@@ -36,7 +36,9 @@ class ReadersController < InheritedResources::Base
   def forgottenPassword
   end
   def showBook
-    @book = Book.find(params[:id])
+
+   @book = Book.find(params[:id])
+  
   end
   def reserved
      @book = Book.find(params[:id_book])

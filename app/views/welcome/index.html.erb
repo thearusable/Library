@@ -23,7 +23,7 @@
 				                <td><%= book.title %></td>
 				                <td><% book.writers.each do |writer| %>
 				                <%= writer.name %><% end %></td>
-				                <td><%= link_to 'Show',{controller: 'books', action: 'show', id: book.id } %></td>
+				                <td><%= link_to 'Pokaż',{controller: 'books', action: 'show', id: book.id } %></td>
 				            </tr>
 				          <% end %>
 				         <% end %>
