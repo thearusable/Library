@@ -38,6 +38,7 @@ end
 get 'readers/:id/my_reservations' => 'readers#my_reservations'
 get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
 get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
-post 'books/:id/reserved' => 'books#reserved'
+post 'reader/:id/books/:id_book/reserved' => 'readers#reserved'
+#post 'books/:id/reserved' => 'books#reserved'
 
 end

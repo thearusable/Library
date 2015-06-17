@@ -11,7 +11,7 @@
 	</table>
 	  <% if params[:commit] == "Zarezerwuj"%>
 		<% if @book.current_reservation_id == nil %>
-		     <% res = Reservation.create({:reader_id => params[:readerID], :book_id => params[:id], :received => false, :returned => false})%>
+		     <% res = Reservation.create({:reader_id => params[:id], :book_id => params[:id_book], :received => false, :returned => false})%>
 			 <% book = Book.find(params[:id])%>
 			 <% book.current_reservation_id = res.id %>
 		   	 <%book.save%>

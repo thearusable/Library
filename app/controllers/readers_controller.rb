@@ -38,6 +38,9 @@ class ReadersController < InheritedResources::Base
   def showBook
     @book = Book.find(params[:id])
   end
+  def reserved
+     @book = Book.find(params[:id_book])
+  end
 
   private
     def reader_params

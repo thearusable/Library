@@ -1,5 +1,24 @@
 <%= render 'readers/header_2' %> 
 <div class="bookInfo">
-	<%= render 'books/show' %> 
+	
+	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+	<table>
+		  <tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
+		  <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
+								  <%= writer.name %>
+								  <% end %>
+						 </td></tr>
+		  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+		  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+	</table>
+	<div class="resForm">
+	  <%= form_tag(controller: "readers", action: "reserved") do %>
+	  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary bookButton" %> 
+	  <% end %>
+	</div>
+	<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
+
+
+
 </div>
 <%= render 'welcome/footer' %> 

@@ -9,10 +9,11 @@
 		  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
 		  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
 	</table>
-	  <%= form_tag(controller: "books", action: "reserved", readerID: params[:readerID], :class => "resForm") do %>
+	<div class="resForm">
+	  <%= form_tag(controller: "readers", action: "reserved") do %>
 	  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary bookButton" %> 
 	  <% end %>
-	
-	<p><%= link_to 'Powrót', searching_reader_path, :class => 'backLink' %></p>
+	</div>
+	<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
 
 
