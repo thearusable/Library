@@ -1,10 +1,6 @@
 class CustomFailure < Devise::FailureApp
-  def redirect_url
-    if warden_options[:scope] == :reader
-      register_path
-    else
-      new_user_registration_path
-    end
+ def redirect_url
+    login_path
   end
   def respond
     if http_auth?
@@ -14,9 +10,5 @@ class CustomFailure < Devise::FailureApp
     end
   end
 
-  def redirect
-    store_location!
-    flash[:alert] = i18n_message unless flash[:notice]
-    redirect_to '/'
-  end
+  
 end

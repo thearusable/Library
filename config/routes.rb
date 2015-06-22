@@ -2,16 +2,28 @@ Rails.application.routes.draw do
   devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-devise_for :readers, :controllers => {:passwords => "passwords"}
-
+devise_for :readers ,:controllers => {:passwords => "passwords"}#, :registrations => "registrations"}
+#as :reader do 
+    #get 'register' => 'devise/registrations#new'
+    #post 'signin' => 'devise/sessions#create', :as => :user_session
+ #   match 'register' => 'devise/registrions#new', :as => :destroy_user_session,
+    #  :via => Devise.mappings[:user].sign_out_via
+ # end
+ devise_scope :reader do
+  #get "register", to: "devise/registrations#new"
+  get 'sign_up', to: 'welcome#register'
+end
 resources :readers
-#devise_for :readers, :controllers => {:registrations => "registrations"}
+#devise_for :readers#, :controllers => {:registrations => "registrations"}
+
+get '/readers', to: redirect('/register')
 
 get 'newBooks' => 'welcome#newBooks'
 get 'about' => 'welcome#about'
 get 'login' => 'welcome#login'
 get 'register' => 'welcome#register'
 get 'forgottenPassword' => 'welcome#passwordNewPage'
+
 
 resources :books
 get 'newBooks/:id' => 'books#show'

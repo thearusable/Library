@@ -1,8 +1,8 @@
 <% @readerData.each do |data| %>
+
     <div class="container">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-        <%= devise_error_messages! %>
-
+        <%= render 'layouts/messages' %>
         <div class="form-group">
             <%= f.label :Imię_i_nazwisko, class: 'col-sm-2 control-label'  %>
             <div class="col-sm-6">

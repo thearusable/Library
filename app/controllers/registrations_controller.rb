@@ -5,7 +5,7 @@ class Devise::RegistrationsController < DeviseController
   # GET /resource/sign_up
   def new
     build_resource({})
-    set_minimum_password_length
+  #  set_minimum_password_length
     yield resource if block_given?
     respond_with self.resource
   end
@@ -28,7 +28,7 @@ class Devise::RegistrationsController < DeviseController
       end
     else
       clean_up_passwords resource
-      set_minimum_password_length
+    #  set_minimum_password_length
       respond_with resource
     end
   end
@@ -143,5 +143,9 @@ class Devise::RegistrationsController < DeviseController
 
   def translation_scope
     'devise.registrations'
+  end
+
+  def after_sign_up_fails_path_for(resource)
+    register_path
   end
 end
