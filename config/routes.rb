@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
 devise_for :readers, :controllers => {:passwords => "passwords"}
 
+resources :readers
+#devise_for :readers, :controllers => {:registrations => "registrations"}
 
 get 'newBooks' => 'welcome#newBooks'
 get 'about' => 'welcome#about'
@@ -13,10 +15,6 @@ get 'forgottenPassword' => 'welcome#passwordNewPage'
 
 resources :books
 get 'newBooks/:id' => 'books#show'
-
-get 'login' => 'welcome#login'
-get 'register' => 'welcome#register'
-get 'forgottenPassword' => 'welcome#passwordNewPage'
 
 resources :reservations
 
@@ -30,8 +28,8 @@ resources :readers do
 		get 'my_reservations'
 		get 'my_borrows'
 		get 'searching'
-    get 'booking'
-    get 'editProfile'
+	    get 'booking'
+	    get 'editProfile'
 	end
 end  
 
@@ -39,6 +37,7 @@ get 'readers/:id/my_reservations' => 'readers#my_reservations'
 get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
 get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 post 'reader/:id/books/:id_book/reserved' => 'readers#reserved'
+get 'reader/:id/editProfile' => 'readers#editProfile'
 #post 'books/:id/reserved' => 'books#reserved'
 
 end

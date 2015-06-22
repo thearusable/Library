@@ -20,6 +20,9 @@ class ReadersController < InheritedResources::Base
       @borrows = Reservation.where({reader_id: params[:id], received: true})
     end
  
+  def editProfile
+    @readerData = Reader.where(:id => current_reader.id)
+  end
   helper_method :resource, :resource_name, :devise_mapping
   def resource_name
       :reader
