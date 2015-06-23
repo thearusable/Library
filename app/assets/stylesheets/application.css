@@ -251,3 +251,6 @@ table tr:nth-child(odd){
   float: none;
 }
 
+.radio {
+	background: url("star.png") no-repeat;
+}

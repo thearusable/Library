@@ -4,6 +4,18 @@
 	<% r = Reservation.find(params[:resID])%>
       
 	<% book = Book.find(r.book_id)%>
+        <% @notes = Review.where(:book_id => book.id)%>
+        <% @countNotes = @notes.count %>
+        <% @suma = 0 %>
+        <% if !@notes.nil? %>
+                <% @notes.each do |note| %>
+                <% @suma+=note.score %>
+                <% end %>
+        <% end %>
+        <% if !@countNotes.nil? %>
+        <% @average = @suma/@countNotes %>
+        <% else @average = 0 %>
+        <% end %>
                 <div><%= image_tag(book.image(:medium), :class => 'bookImage') %></div>
                         <table class="resBorTable">
                         	<tr><th>Tytuł:</th><td><%= book.title%></td></tr>
@@ -13,6 +25,7 @@
                                                 </td></tr>
                                 <tr><th>Kategoria:</th><td><%= Category.find(book.category_id).name %></td></tr>
                                 <tr><th>Opis:</th><td><%= book.description %></td></tr>
+                                <tr><th>Ocena:</th><td><%= @average %></td></tr>
                                 <tr><th>Utworzono:</th><td><%= r.created_at %></td></tr>
                         </table>
                 <div><%= link_to 'Powrót', my_reservations_reader_path, :class => 'backLink' %></div>

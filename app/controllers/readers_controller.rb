@@ -1,7 +1,21 @@
 class ReadersController < InheritedResources::Base
 	before_action :authenticate_reader!
+  ratyrate_rater
   
    def showBorrow
+    @borrowId = Reservation.find(params[:borrowID])
+    @notes = Review.where(:book_id => @borrowId.book_id) 
+    @countNotes = @notes.count
+    @suma = 0
+     if !@notes.nil? 
+    @notes.each do |note| 
+      @suma+=note.score
+    end 
+    end
+     if !@notes.nil?
+    @average = @suma/@countNotes
+  else @average = 0
+  end
    end
     
     def searching
@@ -14,6 +28,7 @@ class ReadersController < InheritedResources::Base
 
     def my_reservations
         @reservations = Reservation.where({reader_id: params[:id], received: false})  
+
     end
 
     def my_borrows
@@ -41,11 +56,41 @@ class ReadersController < InheritedResources::Base
   def showBook
 
    @book = Book.find(params[:id])
-  
+   @notes = Review.where(:book_id => params[:id]) 
+   @countNotes = @notes.count
+    @suma = 0
+     if !@notes.nil? 
+    @notes.each do |note| 
+      @suma+=note.score
+    end 
+  end
+     if !@notes.nil?
+    @average = @suma/@countNotes
+  else @average = 0
+  end
   end
   def reserved
      @book = Book.find(params[:id_book])
+     @notes = Review.where(:book_id => params[:id]) 
+    @countNotes = @notes.count
+     @suma = 0
+      if !@notes.nil? 
+    @notes.each do |note| 
+      @suma+=note.score
+    end 
   end
+     if !@notes.nil?
+    @average = @suma/@countNotes
+  else @average = 0
+  end
+  end
+
+  def mark
+    @mark = params[:review]
+    @comment = params[:comment]
+    @note = Review.create(:score => @mark, :comment => @comment, :book_id => params[:id_book], :reader_id => current_reader.id )
+  end
+
 
   private
     def reader_params

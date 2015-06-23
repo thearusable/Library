@@ -7,6 +7,16 @@ class BooksController < InheritedResources::Base
 
     def show
       @book = Book.find(params[:id])
+      @notes = Review.where(:book_id => params[:id])
+      @countNotes = @notes.count
+       @suma = 0
+    @notes.each do |note| 
+      @suma+=note.score
+    end 
+    if !@notes.nil?
+    @average = @suma/@countNotes
+	else @average = 0
+	end
     end
 
     def reserved

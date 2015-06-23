@@ -2,13 +2,14 @@
 <div class="bookInfo">
 	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
 	<table>
-	  <tr><th>Title:</th><td><%= @book.title %></td></tr>
-	  <tr><th>Author:</th><td><% @book.writers.each do |writer| %>
+	  <tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
+	  <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
 							  <%= writer.name %>
 							  <% end %>
 					 </td></tr>
-	  <tr><th>Category:</th><td><%= Category.find(@book.category_id).name %></td></tr>
-	  <tr><th>Description:</th><td><%= @book.description %></td></tr>
+	  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+	  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+	  <tr><th>Ocena:</th><td><%= @average %></td></tr>
 	 </table>
 	
 	<p><%= link_to 'Powrót', root_path, :class => 'backLink' %></p>

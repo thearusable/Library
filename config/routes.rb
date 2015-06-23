@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -50,6 +51,6 @@ get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
 get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 post 'reader/:id/books/:id_book/reserved' => 'readers#reserved'
 get 'reader/:id/editProfile' => 'readers#editProfile'
-#post 'books/:id/reserved' => 'books#reserved'
+post 'readers/:id/my_borrows/showBorrow/mark' => 'readers#mark'
 
 end
