@@ -49,7 +49,7 @@ class ReadersController < InheritedResources::Base
 
   private
     def reader_params
-      params.require(:reader).permit(:name, :lastname)
+      params.require(:reader).permit(:name, :phone, :adress)
     end
 
 end
