@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :librarians, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+devise_for :librarians, ActiveAdmin::Devise.config
+ActiveAdmin.routes(self)
 
-devise_for :readers ,:controllers => {:passwords => "passwords",:registrations => "registrations"}#, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+devise_for :readers ,:controllers => {:passwords => "passwords", :registrations => "registrations"}
 
 resources :readers
 
@@ -38,5 +38,6 @@ get 'readers/:id/my_reservations/showRes' => 'readers#showRes'
 get 'readers/:id/my_borrows/showBorrow' => 'readers#showBorrow'
 post 'reader/:id/books/:id_book/reserved' => 'readers#reserved'
 get 'reader/:id/editProfile' => 'readers#editProfile'
+
 
 end
