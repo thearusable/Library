@@ -1,50 +1,11 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	 	  <title>Library</title>
-		  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext'%>
-		  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		  <%=javascript_include_tag "vendor/modernizr"%>
-		  <%= csrf_meta_tags %>
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
-		<!--Nagłówek-->
-		<div class="header">
-			<div class="content">
-			  <% if reader_signed_in? %>
-			  <p class="whoIsLogged">Logged in as <strong><%= current_reader.email %></strong></p>
-			  <div class="logoutLink"><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></div>
-			  <div class="editLink"><%= link_to 'Edit profile', edit_reader_registration_path, :class => 'links'%></div>
-			  <%end%>
-		  	</div>
-		</div>
-		<!--Pasek z zakładkami-->
-		<div class="subheader">
-			<div class="content">
-				<ul class="menu">
-					<li class="small-3">
-					<%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'}, :class => 'active'%></li>
-					<li class="small-3">
-					<%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'}%></li>
-					<li class="small-3">
-					<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'}%></li>
-					<li class="small-3">
-					<%= link_to 'Moje statystyki', {controller: "readers", action: 'my_statistics'}%>
-					</li>
-				</ul>
-			</div>
-		</div>
+<%= render 'header_2' %> 
 		<!--Zawartość podstrony-->
-		<div class="pageContent">
-			<div class="content">
-				<h2 class='myResHeader'>Moje rezerwacje</h2>
+		<div class="container">
+				<h3 class='myResHeader'>Moje rezerwacje</h3>
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
 					<% if !@reservations.nil? %>
-					<th><td>Tytuł</td><td>Autor</td><td>Data utworzenia</td><td>Data aktualizacji</td></th>
+					<th>Tytuł</th><th>Autor</th><th>Data utworzenia</th><th>Data aktualizacji</th><th></th><th></th>
 						<% @reservations.each do |r| %>
 						<% reservationID = r.id %>
 				      	<tr>
@@ -57,16 +18,12 @@
 					        </td>
 					        <td><%= r.created_at %></td>
 					        <td><%= r.updated_at %></td>
-					        <td><%= link_to 'Show', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
-					        <td><%= link_to 'Edit', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Pokaż', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Usuń', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    </tr>
 				    	<% end %>
-				    <%else%>
-				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+				   
 			    	<% end %>
 				</table>
-			</div>
 		</div>
-		<div class="footer"></div>
-	</body>
-</html>
+<%= render 'welcome/footer' %>

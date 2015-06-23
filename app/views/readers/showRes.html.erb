@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	 	  <title>Library</title>
-		  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext'%>
-		  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		  <%=javascript_include_tag "vendor/modernizr"%>
-		  <%= csrf_meta_tags %>
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
+<%= render 'header_2' %> 
+<div class="bookInfo">
+
 	<% r = Reservation.find(params[:resID])%>
-
+      
 	<% book = Book.find(r.book_id)%>
-		<%= image_tag(book.image(:medium)) %>
-		<td><%= book.title%></td>  
-					        <td>
-					        	<% book.writers.each do |writer| %>
-					        	<%= writer.name %>
-					        	<% end %> 
-					        </td>
-					        <td><%= book.description %></td>
-					        <td><%= r.created_at %></td>
-					        <td><%= r.updated_at %></td>
+                <div><%= image_tag(book.image(:medium), :class => 'bookImage') %></div>
+                        <table class="resBorTable">
+                        	<tr><th>Tytuł:</th><td><%= book.title%></td></tr>
+                                <tr><th>Autor:</th><td><% book.writers.each do |writer| %>
+                                                	<%= writer.name %>
+                                                	<% end %> 
+                                                </td></tr>
+                                <tr><th>Kategoria:</th><td><%= Category.find(book.category_id).name %></td></tr>
+                                <tr><th>Opis:</th><td><%= book.description %></td></tr>
+                                <tr><th>Utworzono:</th><td><%= r.created_at %></td></tr>
+                        </table>
+                <div><%= link_to 'Powrót', my_reservations_reader_path, :class => 'backLink' %></div>
+</div>
 
-	</body>
-</html>
+<%= render 'welcome/footer' %> 
+

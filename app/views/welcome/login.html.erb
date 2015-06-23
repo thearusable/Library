@@ -1,32 +1,8 @@
- <!DOCTYPE html>
-<html>
-<head>
-  <title>Library</title>
-  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%=javascript_include_tag "vendor/modernizr"%>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
-
-	<%= render 'header' %>
-
-	<div class="container">
-		<h1>Zaloguj się na istniejące konto!</h1>
-
-		<%= form_for(:reader, :url => session_path(:reader)) do |f| %>
-	  		<%= f.text_field :email %>
-	  		<%= f.password_field :password %>
-	  		<%= f.check_box :remember_me %>
-	  		<%= f.label :remember_me %>
-	  		<%= f.submit 'Sign in' %>
-	  		<%= link_to "Forgot your password?", new_password_path(:reader) %>
-		<% end %>
+<%= render 'header' %>
+	<div class="log">
+		<div class="wrapper">
+			<h2>Zaloguj się!</h2>
+			<%= render 'devise/sessions/new' %>
+		</div>
     </div>
-
-	<%= render 'footer' %>
-	
-</body>
-</html>
+<%= render 'footer' %>

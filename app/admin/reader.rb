@@ -2,7 +2,7 @@ ActiveAdmin.register Reader do
 
   permit_params :name, :email, :adress, :phone
 
-  actions :index, :new, :create, :update, :edit
+  actions :index, :new, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false
@@ -15,7 +15,9 @@ ActiveAdmin.register Reader do
 
 	#index
     index do
-      column "Imię i Nazwisko", :name
+      column "Imię i Nazwisko" do |r|
+        link_to r.name, edit_admin_reader_path(r)
+      end
       column "Email", :email
       column "Adres", :adress
       column "Ostatnie Logowanie", :last_sign_in_at

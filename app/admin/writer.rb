@@ -2,7 +2,7 @@ ActiveAdmin.register Writer do
 
   permit_params :name, :image, :nationality, :biography
 
-  actions :index, :new, :create, :update, :edit
+  actions :index, :new, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false
@@ -13,10 +13,12 @@ ActiveAdmin.register Writer do
 
 	#index
     index do
-      column "Okładka" do |writer|
+      column "Fotografia" do |writer|
         image_tag(writer.image(:thumb))
       end
-      column "Imię i Nazwisko", :name
+      column "Imię i Nazwisko" do |w|
+        link_to w.name, edit_admin_writer_path(w)
+      end
       column "Narodowość", :nationality
       column "Biografia", :biography
       actions

@@ -1,8 +1,9 @@
 ActiveAdmin.register Reservation do
 
-  menu priority: 0
+  menu priority: 1
 
   permit_params :received, :returned, :receivedDate, :returnedDate
+
 
   actions :index, :new, :create, :update, :edit, :destroy
 
@@ -27,10 +28,10 @@ ActiveAdmin.register Reservation do
 
 	#index
     index do
-      column "Książka" do |r|
+      column "Książka"  do |r|
         if r.book_id?
           b = Book.find(r.book_id)
-          link_to b.title, admin_book_path(b)
+          link_to b.title, edit_admin_book_path(b)
         end
       end
       column "Odebrano?", :received
@@ -39,7 +40,7 @@ ActiveAdmin.register Reservation do
       column "Data Zwrócenia", :returnedDate
       column "Rezerwujący" do |r|
         obj = Reader.find(r.reader_id)
-        link_to obj.name, admin_reader_path(obj)
+        link_to obj.name, edit_admin_reader_path(obj)
       end 
       column "Ostatnia Aktualizacja", :updated_at
       actions
@@ -48,10 +49,10 @@ ActiveAdmin.register Reservation do
     #update - do poprawy 
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Szczegóły Rezerwacji" do
+      f.input :receivedDate, :as => :datepicker, :label => "Data Odebrania Książki."
       f.input :received, :label => "Odebrano?"
+      f.input :returnedDate, :as => :datepicker, :label => "Data Zwrócenia Książki."
       f.input :returned, :label => "Zwrócono?"
-      #f.input :receivedDate, :label => "Data Odebrania" - to bedzie w modelu
-      #f.input :returnedDate, :label => "Data Zwrócenia"
       end
       f.actions
     end

@@ -1,32 +1,47 @@
-<nav class="navbar navbar-default navbar-fixed-top " >
-  <div class="container">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">      
-      <a class="navbar-brand" href="/">
-      	<%=image_tag("owl.png", weight: 20, height: 20)%>
-      </a>
-    </div>
-    
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    	<ul class="nav navbar-nav nav-pills navbar-left">
- 		 <li> <%= link_to "Strona Główna", root_path %> </li>
- 		 <li> <%= link_to "Nowości", newBooks_path %> </li>
- 		 <li> <%= link_to "Informacje", about_path %> </li>
-		</ul>
-      <ul class="nav navbar-nav navbar-right">
-      	<% if reader_signed_in? %> 
-      		<p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
-  			<li> <%= link_to 'Edit profile', edit_reader_registration_path, :class => 'navbar-link' %> </li>
-  			<li> <%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'navbar-link'  %> </li>
-		<% else %>
- 			<li> <%= link_to "Zalguj się", login_path %> </li>
-        	<li> <%= link_to "Zarejestruj się", register_path %> </li>
-		<% end %>
-      </ul>
-    </div>
-    </div>
-  </div>
-</nav>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library</title>
+    <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'bootstrap-theme.min', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300&subset=latin,latin-ext' %>
+    <%= csrf_meta_tags %>
+    <meta charset='utf-8' name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+  <!--Nawigacja strony głównej-->
+    <nav class="navbar navbar-default navbar-fixed-top " >
+      <div class="container">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">      
+            <a class="navbar-brand" href="/">
+            	<%=image_tag("owl.png", width: 20, height: 20)%>
+            </a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          	<ul class="nav navbar-nav nav-pills navbar-left">
+           		 <li> <%= link_to "Home", root_path, :class => 'mainLink'%> </li>
+           		 <li> <%= link_to "Nowe propozycje", '/#newBooks', :class => 'mainLink'%> </li>
+           		 <li> <%= link_to "O nas", '/#about', :class => 'mainLink'%> </li>
+      		  </ul>
+            <ul class="nav navbar-nav navbar-right">
+              	<% if reader_signed_in? %> 
+                	<p class="navbar-text">Witaj, <strong><%= current_reader.name %></strong>.</p>
+            			<li> <%= link_to 'Moje konto', searching_reader_path(current_reader), :class => 'mainLink' %> </li>
+            			<li> <%= link_to "Wyloguj", destroy_reader_session_path, method: :delete, :class => 'mainLink'  %> </li>
+      		      <% else %>
+         			    <li> <%= link_to "Zaloguj", login_path, :class => 'mainLink' %> </li>
+                	<li> <%= link_to "Zarejestruj się", register_path, :class => 'mainLink' %> </li>
+      		      <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="pageContent">
+  

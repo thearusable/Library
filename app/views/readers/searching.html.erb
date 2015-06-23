@@ -1,54 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	 	  <title>Library</title>
-		  <%= stylesheet_link_tag 'reset', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,latin-ext'%>
-		  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		  <%=javascript_include_tag "vendor/modernizr"%>
-		  <%= csrf_meta_tags %>
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
-		<!--Nagłówek-->
-		<div class="header">
-			<div class="content">
-			  <% if reader_signed_in? %>
-			  <p class="whoIsLogged">Logged in as <strong><%= current_reader.email %></strong></p>
-			  <div class="logoutLink"><%= link_to "Logout", destroy_reader_session_path, method: :delete, :class => 'links'%></div>
-			  <div class="editLink"><%= link_to 'Edit profile', edit_reader_registration_path, :class => 'links'%></div>
-			  <%end%>
-		  	</div>
-		</div>
-		<!--Pasek z zakładkami-->
-		<div class="subheader">
-			<div class="content">
-				<ul class="menu">
-					<li class="small-3">
-					<%= link_to 'Wyszukiwanie', {controller: "readers", action: 'searching'}, :class => 'active'%></li>
-					<li class="small-3">
-					<%= link_to 'Moje rezerwacje', {controller: "readers", action: 'my_reservations'}%></li>
-					<li class="small-3">
-					<%= link_to 'Moje wypożyczenia', {controller: "readers", action: 'my_borrows'}%></li>
-					<li class="small-3">
-					<%= link_to 'Moje statystyki', {controller: "readers", action: 'my_statistics'}%>
-					</li>
-				</ul>
-			</div>
-		</div>
+<%= render 'header_2' %> 
+		
 		<!--Zawartość podstrony-->
-		<div class = "pageContent">
-			<div class = "content">
+		<div class = "container">
 				<!--Formularz do wyszukiwania-->
-				<div class = "searchForm">
-					<%= form_tag searching_reader_path, :method => 'get', :class => 'searchBookForm' do %>
-			  			   <%= text_field_tag :title, params[:title], :class => 'searchField' %>
-			    		   <%= submit_tag "Search", :name => nil, :class => 'searchSubmit' %>
-					<% end %>
+				<div class="formHolder">
+					<div class = "searchForm">
+						<%= form_tag searching_reader_path, :method => 'get', :class => 'searchBookForm' do %>
+				  			   <%= text_field_tag :title, params[:title], :class => 'form-control' %>
+				    		   <%= submit_tag "Szukaj", :name => nil, :class => 'btn btn-default' %>
+						<% end %>
+					</div>
 				</div>
 				<!--Wyświetlanie znalezionych książek-->
-				<div class = "booksTable">
+				<div>
+				<table class = "booksTable">
+					<th>Tytuł</th><th>Autor</th><th></th>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
 						<% bookID = book.id %>
@@ -59,16 +25,13 @@
 					        	<%= writer.name %>
 					        	<% end %>
 					        </td>
-					        <td><%= link_to 'Show', {controller: 'books', action: 'show', bookID: bookID}  %></td></br>
-					        <td><%= link_to 'Rezerwuj', {controller: 'readers', action: 'booking', bookID: bookID} %></td></br>
-				      	</tr>
+					        <td><%= link_to 'Pokaż',{controller: 'readers', action: 'showBook', id_book: bookID} %></td>
+					    </tr>
 				    	<% end %>
 				    <%else%>
-				    	<%= puts "<p>Nie znaleziono książek o podanym tytule!</p>"%>
+				    	<p>Nie znaleziono książek o podanym tytule!</p>
 			    	<% end %>
+			    	</table>
 		 		</div>
-		 	</div>
 		</div>
-		<div class="footer"></div>
-	</body>
-</html>
+<%= render 'welcome/footer' %>
