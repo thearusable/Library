@@ -25,21 +25,6 @@ ActiveAdmin.register Review do
   scope :"5" do |r|
     Review.where({score: 5})
   end
-  scope :"6" do |r|
-    Review.where({score: 6})
-  end
-  scope :"7" do |r|
-    Review.where({score: 7})
-  end
-  scope :"8" do |r|
-    Review.where({score: 8})
-  end
-  scope :"9" do |r|
-    Review.where({score: 9})
-  end
-  scope :"10" do |r|
-    Review.where({score: 10})
-  end
 
  #filters
     filter :score, :label => "Ocena"

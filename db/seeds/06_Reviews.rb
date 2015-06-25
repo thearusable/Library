@@ -1,7 +1,7 @@
 #reviews - ready
 ReviewsCount.times do |n|
     r = Review.new
-    r.score =  Random.rand(10) + 1
+    r.score =  Random.rand(5) + 1
     r.comment = Faker::Hacker.say_something_smart
     r.book_id =  Random.rand(BooksCount) + 1
     r.reader_id = Random.rand(UsersCount) + 1
