@@ -2,12 +2,13 @@
 <div class="bookInfo">
 	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
 	<table class="resBorTable">
-		<tr><th>Title:</th><td><%= @book.title %></td></tr>
-		<tr><th>Author:</th><td><% @book.writers.each do |writer| %>
+		<tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
+		<tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
 								<%= writer.name %>
 								<% end %>
 					   </td></tr>
-		<tr><th>Description:</th><td><%= @book.description %> </td></tr>
+		<tr><th>Opis:</th><td><%= @book.description %> </td></tr>
+		<tr><th>Ocena:</th><td><%= @average %> </td></tr>
 	</table>
 	  <% if params[:commit] == "Zarezerwuj"%>
 		<% if @book.current_reservation_id == nil %>
