@@ -258,7 +258,7 @@ table tr:nth-child(odd){
 
 
 
-<style>
+
     .star-cb-group {
         /* remove inline-block whitespace */
         font-size: 0;
@@ -321,8 +321,17 @@ table tr:nth-child(odd){
 
     fieldset {
         border: 0;
-        width: 5em;
-        border-radius: 1px;
-        padding: 1em 1.5em 0.9em;
-        margin: 1em auto;
+       width: 300px;
+  float: left;
     }
+
+
+
+.markContainer {
+	margin: 20px auto;
+	width: 200px;
+}
+
+.markContainer .star-cb-group {
+	float: right;
+}

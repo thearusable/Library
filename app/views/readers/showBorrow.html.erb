@@ -21,35 +21,34 @@
                                 <td><%= r.returnedDate %></td>
                             <%end%>
                         </tr>
-                        <tr><th>Ocena:</th><td><%= @average %></td></tr>
+                        <tr><th>Ocena:</th><td id="rate"><%= book.averageRating %></td></tr>
                 </table>
-                <% if r.returnedDate != nil %>
-                    <%= form_tag(controller: "readers", action: "mark") do %>
-                    <form>
-                        <fieldset>
-                            <span class="star-cb-group">
-                                <%= rating_for book, "score" %>
-                                <%= radio_button_tag(:review, 1) %>
-                                <%= label_tag(:review, "1") %>
-                                <%= radio_button_tag(:review, 2) %>
-                                <%= label_tag(:review, "2") %>
-                                <%= radio_button_tag(:review, 3) %>
-                                <%= label_tag(:review, "3") %>
-                                <%= radio_button_tag(:review, 4) %>
-                                <%= label_tag(:review, "4") %>
-                                <%= radio_button_tag(:review, 5) %>
-                                <%= label_tag(:review, "5") %>
-                            </span>
-                        </fieldset>
-                    </form>
-                        <%= label_tag(:comment, "Komentarz") %>
-                        <%= text_area_tag(:comment, "Hi, nice site", size: "50x10") %>
-                        <%= submit_tag "Oceń", :class => "btn btn-primary bookButton" %> 
-                    <% end %>
+                <% if @isMarked.nil? %>
+                    <div class="markContainer">
+                        <% if r.returnedDate != nil %>
+                            <%= form_tag(controller: "readers", action: "mark") do %>
+                            <form>
+                                <fieldset>
+                                    <span id="stars" class="star-cb-group">
+                                        <input type="radio" id="rating-5" name="review" value="5" /><label for="rating-5">5</label>
+                                        <input type="radio" id="rating-4" name="review" value="4" /><label for="rating-4">4</label>
+                                        <input type="radio" id="rating-3" name="review" value="3" /><label for="rating-3">3</label>
+                                        <input type="radio" id="rating-2" name="review" value="2" /><label for="rating-2">2</label>
+                                        <input type="radio" id="rating-1" name="review" value="1" /><label for="rating-1">1</label>
+                                    </span>
+                                </fieldset>
+                                <%= render 'layouts/messages' %>
+                                <%= label_tag(:comment, "Komentarz", :class => 'commentLabel')  %>
+                                <%= text_area_tag(:comment, "", size: "50x10") %>
+                                <%= hidden_field_tag('borrow', params[:borrowID]) %>
+                                <%= submit_tag "Oceń", :class => "btn btn-primary bookButton" %> 
+                            </form>
+                            <% end %>
+                        <% end %>
+                    </div>
                 <% end %>
         <p><%= link_to 'Powrót', my_borrows_reader_path %></p>
 </div>
 
 
-<%= render 'welcome/footer' %> 
-
+<%= render 'welcome/footer' %>
