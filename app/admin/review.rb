@@ -1,7 +1,6 @@
 ActiveAdmin.register Review do
 
-  #menu priority: 2
-  menu false
+  menu priority: 2
 
   permit_params :score, :comment, :book_id, :reader_id
 

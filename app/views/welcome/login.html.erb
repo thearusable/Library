@@ -3,6 +3,23 @@
 		<div class="wrapper">
 			<h2>Zaloguj się!</h2>
 			<%= render 'devise/sessions/new' %>
+			<div class="links-f">
+				<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  					<%= link_to "Zarejestruj się", register_path %>
+				<% end -%>
+
+				<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+ 				<%= link_to "Zapomniałeś hasła?", forgottenPassword_path %>
+				<% end -%>
+
+				<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  				<%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+				<% end -%>
+
+				<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  				<%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
+				<% end -%>
+				</div>
 		</div>
     </div>
 <%= render 'footer' %>

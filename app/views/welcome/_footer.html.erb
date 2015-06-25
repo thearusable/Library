@@ -1,7 +1,11 @@
 		</div>
 		<div id="footer" class="footer">
 		    <div class="container">
-		        <p class="text-muted">Copyright Arkadiusz Szczepkowicz&Karolina Pawlus @2015</p>
+		        <p class="text-muted">Copyright Arkadiusz Szczepkowicz&Karolina Pawlus @2015
+		        <% if current_reader.blank? %>
+		        	<%= link_to "Panel Bibliotekarza", new_librarian_session_path %>
+		        <% end %>
+		        </p>
 		    </div>
 		</div>
 	</body>
