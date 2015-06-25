@@ -25,19 +25,23 @@
                 </table>
                 <% if r.returnedDate != nil %>
                     <%= form_tag(controller: "readers", action: "mark") do %>
-                        <span class="star-rating">
-                            <%= rating_for book, "score" %>
-                            <%= radio_button_tag(:review, 1) %>
-                            <%= label_tag(:review, "1") %>
-                            <%= radio_button_tag(:review, 2) %>
-                            <%= label_tag(:review, "2") %>
-                            <%= radio_button_tag(:review, 3) %>
-                            <%= label_tag(:review, "3") %>
-                            <%= radio_button_tag(:review, 4) %>
-                            <%= label_tag(:review, "4") %>
-                            <%= radio_button_tag(:review, 5) %>
-                            <%= label_tag(:review, "5") %>
-                        </span>
+                    <form>
+                        <fieldset>
+                            <span class="star-cb-group">
+                                <%= rating_for book, "score" %>
+                                <%= radio_button_tag(:review, 1) %>
+                                <%= label_tag(:review, "1") %>
+                                <%= radio_button_tag(:review, 2) %>
+                                <%= label_tag(:review, "2") %>
+                                <%= radio_button_tag(:review, 3) %>
+                                <%= label_tag(:review, "3") %>
+                                <%= radio_button_tag(:review, 4) %>
+                                <%= label_tag(:review, "4") %>
+                                <%= radio_button_tag(:review, 5) %>
+                                <%= label_tag(:review, "5") %>
+                            </span>
+                        </fieldset>
+                    </form>
                         <%= label_tag(:comment, "Komentarz") %>
                         <%= text_area_tag(:comment, "Hi, nice site", size: "50x10") %>
                         <%= submit_tag "Oceń", :class => "btn btn-primary bookButton" %> 

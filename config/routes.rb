@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :librarians, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

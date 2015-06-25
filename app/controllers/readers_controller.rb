@@ -1,6 +1,5 @@
 class ReadersController < InheritedResources::Base
 	before_action :authenticate_reader!
-  ratyrate_rater
   
    def showBorrow
     @borrowId = Reservation.find(params[:borrowID])
