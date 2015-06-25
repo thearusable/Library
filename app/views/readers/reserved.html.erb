@@ -8,14 +8,20 @@
 								<% end %>
 					   </td></tr>
 		<tr><th>Opis:</th><td><%= @book.description %> </td></tr>
-		<tr><th>Ocena:</th><td><%= @average %> </td></tr>
+		<tr><th>Ocena:</th><td>
+                                <% if @book.averageRating.nil? %>
+                                        <p>Brak Ocen.</p>
+                                <% else %>
+                                        <%= @book.averageRating %>
+                                <% end %>
+                                </td></tr>
 	</table>
 	  <% if params[:commit] == "Zarezerwuj"%>
 		<% if @book.current_reservation_id == nil %>
 		     <% res = Reservation.create({:reader_id => params[:id], :book_id => params[:id_book], :received => false, :returned => false})%>
-			 <% book = Book.find(params[:id])%>
-			 <% book.current_reservation_id = res.id %>
-		   	 <%book.save%>
+			 <% @book = Book.find(params[:id_book])%>
+			 <% @book.current_reservation_id = res.id %>
+		   	 <% @book.save%>
 		      	 <p class='success'>Książka została zarezerwowana!</p>
 		<% else %>
 		      	 <p class='fail'>Ta książka jest już zarezerwowana!</p>

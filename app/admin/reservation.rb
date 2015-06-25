@@ -34,8 +34,8 @@ ActiveAdmin.register Reservation do
           link_to b.title, edit_admin_book_path(b)
         end
       end
-      column "Odebrano?", :received
-      column "Zwrócono?", :returned
+      column "Książka Odebrana?", :received
+      column "Książka Zwrócona?", :returned
       column "Data Odebrania", :receivedDate
       column "Data Zwrócenia", :returnedDate
       column "Rezerwujący" do |r|

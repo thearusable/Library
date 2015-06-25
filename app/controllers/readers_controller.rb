@@ -54,34 +54,13 @@ class ReadersController < InheritedResources::Base
   end
   def showBook
 
-   @book = Book.find(params[:id])
-   @notes = Review.where(:book_id => params[:id]) 
-   @countNotes = @notes.count
-    @suma = 0
-     if !@notes.nil? 
-    @notes.each do |note| 
-      @suma+=note.score
-    end 
+   @book = Book.find(params[:id_book])
+
   end
-     if !@notes.nil?
-    @average = @suma/@countNotes
-  else @average = 0
-  end
-  end
+
   def reserved
      @book = Book.find(params[:id_book])
-     @notes = Review.where(:book_id => params[:id]) 
-    @countNotes = @notes.count
-     @suma = 0
-      if !@notes.nil? 
-    @notes.each do |note| 
-      @suma+=note.score
-    end 
-  end
-     if !@notes.nil?
-    @average = @suma/@countNotes
-  else @average = 0
-  end
+     
   end
 
   def mark

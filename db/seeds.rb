@@ -1,9 +1,9 @@
 #how many
-UsersCount = 200
+UsersCount = 100
 ReservationsCount = 50
 BooksCount = 400
-WritersCount = 200
-ReviewsCount = 300
+WritersCount = 70
+ReviewsCount = 1000
 
 
 #separate seed files
