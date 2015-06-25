@@ -18,8 +18,8 @@ class ReadersController < InheritedResources::Base
    end
     
     def searching
-       @books = Book.where( 'title LIKE ?', "%#{params[:title]}%")
-       @writers = Writer.where( 'name LIKE ?', "%#{params[:title]}%")
+       @books = Book.where( 'title LIKE ?', "%#{params[:title]}%").limit(15)
+       @writers = Writer.where( 'name LIKE ?', "%#{params[:title]}%").limit(15)
        @writers.each do |writer|
        @books = @books + writer.books
       end

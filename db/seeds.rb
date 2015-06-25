@@ -2,7 +2,7 @@
 UsersCount = 100
 ReservationsCount = 50
 BooksCount = 400
-WritersCount = 70
+WritersCount = 200
 ReviewsCount = 1000
 
 
