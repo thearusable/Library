@@ -14,11 +14,11 @@
 				<!--Wyświetlanie znalezionych książek-->
 				<div>
 				<table class = "booksTable">
-					<th>Tytuł</th><th>Autor</th><th>Średnia Ocen</th><th></th>
+					<th>Okładka</th><th>Tytuł</th><th>Autor</th><th>Średnia Ocen</th><th></th>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
-						<% bookID = book.id %>
 				      	<tr>
+				      		<td><%= image_tag(book.image(:thumb)) %></td>
 					        <td><%= book.title %></td>
 					        <td>
 								<% book.writers.each do |writer| %>
@@ -32,7 +32,7 @@
                                         <%= book.averageRating %>
                                 <% end %>
 					        </td>
-					        <td><%= link_to 'Pokaż',{controller: 'readers', action: 'showBook', id_book: bookID} %></td>
+					        <td><%= link_to 'Pokaż',{controller: 'readers', action: 'showBook', id_book: book.id} %></td>
 					    </tr>
 				    	<% end %>
 				    <%else%>

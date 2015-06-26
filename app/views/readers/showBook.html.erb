@@ -23,6 +23,15 @@
 	  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary bookButton" %> 
 	  <% end %>
 	</div>
+	<% if !@reviews.nil? %>
+		<% @reviews.each do |rev| %>
+			<%= rev.comment %></br>
+			<%= rev.score %></br>
+			<%= Reader.find(rev.reader_id).name %></br>
+		<% end %>
+	<% end %>
+
+
 	<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
 
 

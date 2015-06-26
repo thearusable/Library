@@ -5,11 +5,11 @@
 				<!--Tabela z rezerwacjami książek-->
 				<table class='reservations'>
 					<% if !@reservations.nil? %>
-					<th>Tytuł</th><th>Autor</th><th>Data utworzenia</th><th>Data aktualizacji</th><th></th><th></th>
+					<th>Okładka</th><th>Tytuł</th><th>Autor</th><th>Data utworzenia</th><th>Data aktualizacji</th><th></th><th></th>
 						<% @reservations.each do |r| %>
-						<% reservationID = r.id %>
 				      	<tr>
-							<% book = Book.find(r.book_id)%>
+				      		<% book = Book.find(r.book_id)%>
+				      		<td><%= image_tag(book.image(:thumb)) %></td>
 					        <td><%= book.title%></td>  
 					        <td>
 					        	<% book.writers.each do |writer| %>
@@ -18,7 +18,7 @@
 					        </td>
 					        <td><%= r.created_at %></td>
 					        <td><%= r.updated_at %></td>
-					        <td><%= link_to 'Pokaż', {controller: 'readers', action: 'showRes', resID: reservationID} %></td>
+					        <td><%= link_to 'Pokaż', {controller: 'readers', action: 'showRes', resID: r.id} %></td>
 					        <td><%= link_to 'Usuń', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    </tr>
 				    	<% end %>

@@ -16,6 +16,8 @@ class WelcomeController < ApplicationController
     @devise_mapping ||= Devise.mappings[:reader]
   end
   def index
+    flash[:notice] = []
+    flash[:alert] = []
     @books = Book.all.order(:id).reverse_order.limit(10)
   end
 end

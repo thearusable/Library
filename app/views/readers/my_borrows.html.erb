@@ -5,11 +5,12 @@
 				<!--Tabela z wypożyczonymi książkami-->
 				<table class='borrows'>
 					<% if !@borrows.nil? %>
-					<th>Tytuł</th><th>Autor</th><th>Data wypożyczenia</th><th>Data zwrotu</th><th></th>
+					<th>Okładka</th><th>Tytuł</th><th>Autor</th><th>Data wypożyczenia</th><th>Data zwrotu</th><th></th>
 						<% @borrows.each do |b| %>
 						<% borrowID = b.id %>
 				      	<tr>
 							<% book = Book.find(b.book_id)%>
+							<td><%= image_tag(book.image(:thumb)) %></td>
 					        <td><%= book.title%></td>  
 					        <td>
 					        	<% book.writers.each do |writer| %>

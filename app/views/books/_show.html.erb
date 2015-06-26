@@ -9,6 +9,8 @@
 		  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
 		  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
 	</table>
+
+
 	<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
 
 

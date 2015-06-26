@@ -25,5 +25,8 @@ module Library
     config.autoload_paths += %W(#{config.root}/lib)
     config.api_only = false
     config.session_store
+    config.i18n.load_path += Dir[Rails.root.join('locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :'pl'
+    I18n.locale = :"pl"
   end
 end

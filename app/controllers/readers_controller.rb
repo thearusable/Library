@@ -2,18 +2,24 @@ class ReadersController < InheritedResources::Base
 	before_action :authenticate_reader!
   
    def showBorrow
-  
-    @borrowId = Reservation.find(params[:borrowID])
-    
-   
-     
-   end
+     @res = Reservation.find(params[:borrowID])
+     @book = Book.find(@res.book_id)
+     @cat = Category.find(@book.category_id)  
+     @r = Review.where({:book_id => @book.id, :reader_id => current_reader.id})
+     if @r.count > 0
+      @canReview = false
+     else
+      @canReview = true
+     end 
+   end 
     
     def searching
-       @books = Book.where( 'title LIKE ?', "%#{params[:title]}%").limit(15)
-       @writers = Writer.where( 'name LIKE ?', "%#{params[:title]}%").limit(15)
-       @writers.each do |writer|
-       @books = @books + writer.books
+      flash[:notice] = []
+      flash[:alert] = []
+      @books = Book.where(:current_reservation_id => nil).where( 'title LIKE ?', "%#{params[:title]}%").limit(15)
+      @writers = Writer.where( 'name LIKE ?', "%#{params[:title]}%").limit(15)
+      @writers.each do |writer|
+      @books = @books + writer.books.where(:current_reservation_id => nil)
       end
     end
 
@@ -44,10 +50,10 @@ class ReadersController < InheritedResources::Base
 
   def forgottenPassword
   end
+
   def showBook
-
    @book = Book.find(params[:id_book])
-
+   @reviews = Review.where(:book_id => @book.id)
   end
 
   def reserved
@@ -56,18 +62,13 @@ class ReadersController < InheritedResources::Base
   end
 
   def mark
-=begin    @mark = params[:review]
-    @comment = params[:comment]
-    @bookId = Reservation.find(params[:borrow])
-    @isMarked = Review.where(:book_id => @bookId.book_id, :reader_id => current_reader.id)
-      if !@mark.nil?
-        @note = Review.create(:score => @mark, :comment => @comment, :book_id => @bookId.book_id, :reader_id => current_reader.id )
-        flash[:notice] = 'Twoja ocena została dodana!' 
-      else 
-        flash[:alert] = 'Dodaj ocenę!' 
-        redirect_to :back
-      end
-=end
+    Review.create(:score => params[:review], :comment => params[:comment], :book_id => params[:book], :reader_id => current_reader.id)
+    b = Book.find(params[:book])
+    b.updateRating()
+    b.save
+    flash[:notice] = "Twoja rezenzja została dodana!"
+    redirect_to :back
+
   end
 
 
