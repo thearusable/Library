@@ -28,5 +28,8 @@ module Library
     config.i18n.load_path += Dir[Rails.root.join('locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :'pl'
     I18n.locale = :"pl"
+
+    config.paths['app/views'] << "app/views/welcome"
+
   end
 end
