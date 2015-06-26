@@ -1,29 +1,30 @@
 <%= render 'header_2' %> 
-<div class="bookInfo">
+<div class="container">
+        <div class="bookInfo">
 
-	<% r = Reservation.find(params[:resID])%>      
-	<% @book = Book.find(r.book_id)%>
+        	<% r = Reservation.find(params[:resID])%>      
+        	<% @book = Book.find(r.book_id)%>
 
-                <div><%= image_tag(@book.image(:medium), :class => 'bookImage') %></div>
-                        <table class="resBorTable">
-                        	<tr><th>Tytuł:</th><td><%= @book.title%></td></tr>
-                                <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
-                                                	<%= writer.name %>
-                                                	<% end %> 
-                                                </td></tr>
-                                <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
-                                <tr><th>Opis:</th><td><%= @book.description %></td></tr>
-                                <tr><th>Ocena:</th><td>
-                                <% if @book.averageRating.nil? %>
-                                        <p>Brak Ocen.</p>
-                                <% else %>
-                                        <%= @book.averageRating %>
-                                <% end %>
-                                </td></tr>
-                                <tr><th>Utworzono:</th><td><%= r.created_at %></td></tr>
-                        </table>
-                <div><%= link_to 'Powrót', my_reservations_reader_path, :class => 'backLink' %></div>
+                        <div><%= image_tag(@book.image(:medium), :class => 'bookImage') %></div>
+                                <table class="resBorTable">
+                                	<tr><th>Tytuł:</th><td><%= @book.title%></td></tr>
+                                        <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
+                                                        	<%= writer.name %>
+                                                        	<% end %> 
+                                                        </td></tr>
+                                        <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+                                        <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+                                        <tr><th>Ocena:</th><td>
+                                        <% if @book.averageRating.nil? %>
+                                                <p>Brak Ocen.</p>
+                                        <% else %>
+                                                <%= @book.averageRating %>
+                                        <% end %>
+                                        </td></tr>
+                                        <tr><th>Utworzono:</th><td><%= r.created_at %></td></tr>
+                                </table>
+                        <div><%= link_to 'Powrót', my_reservations_reader_path, :class => 'backLink' %></div>
+        </div>
 </div>
-
 <%= render 'welcome/footer' %> 
 

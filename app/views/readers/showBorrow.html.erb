@@ -1,57 +1,58 @@
 <%= render 'header_2' %> 
-<div class="bookInfo">
-    
-		<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
-                <table class="reaBorTable">
-        		        <tr><th>Tytuł:</th><td><%= @book.title%></td></tr>
-                        <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
-                                        	<%= writer.name %>
-                                        	<% end %> 
-                                       </td></tr>
-                        <tr><th>Kategoria:</th><td><%= @cat.name %></td></tr>
-                        <tr><th>Opis:</th><td><%= @book.description %></td></tr>
-                        <tr><th>Data wypożyczenia:</th><td><%= @res.receivedDate %></td></tr>
-                        <tr><th>Zwrócono:</th>
-                            <%if @res.returnedDate == nil%>
-                                <td>Aktualnie w wypożyczeniu</td>
-                            <%else%>
-                                <td><%= @res.returnedDate %></td>
-                            <%end%>
-                        </tr>
-                        <tr><th>Ocena:</th><td>
-                                <% if @book.averageRating.nil? %>
-                                        <p>Brak Ocen.</p>
-                                <% else %>
-                                        <%= @book.averageRating %>  (<%= @r.count %> ocen)
+<div class="container">
+    <div class="bookInfo">
+        
+    		<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+                    <table class="reaBorTable">
+            		        <tr><th>Tytuł:</th><td><%= @book.title%></td></tr>
+                            <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
+                                            	<%= writer.name %>
+                                            	<% end %> 
+                                           </td></tr>
+                            <tr><th>Kategoria:</th><td><%= @cat.name %></td></tr>
+                            <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+                            <tr><th>Data wypożyczenia:</th><td><%= @res.receivedDate %></td></tr>
+                            <tr><th>Zwrócono:</th>
+                                <%if @res.returnedDate == nil%>
+                                    <td>Aktualnie w wypożyczeniu</td>
+                                <%else%>
+                                    <td><%= @res.returnedDate %></td>
+                                <%end%>
+                            </tr>
+                            <tr><th>Ocena:</th><td>
+                                    <% if @book.averageRating.nil? %>
+                                            <p>Brak Ocen.</p>
+                                    <% else %>
+                                            <%= @book.averageRating %>  (<%= @r.count %> ocen)
+                                    <% end %>
+                                    </td></tr>
+                    </table>
+                    <% if @canReview %>
+                        <div class="markContainer">
+                            <% if @res.returned == true %>
+                                <%= form_tag(controller: "readers", action: "mark") do %>
+                                <form>
+                                    <fieldset>
+                                        <span id="stars" class="star-cb-group">
+                                            <input type="radio" id="rating-5" name="review" value="5" /><label for="rating-5">5</label>
+                                            <input type="radio" id="rating-4" name="review" value="4" /><label for="rating-4">4</label>
+                                            <input type="radio" id="rating-3" name="review" value="3" /><label for="rating-3">3</label>
+                                            <input type="radio" id="rating-2" name="review" value="2" /><label for="rating-2">2</label>
+                                            <input type="radio" id="rating-1" name="review" value="1" /><label for="rating-1">1</label>
+                                        </span>
+                                    </fieldset>
+                                    <%= render 'layouts/messages' %>
+                                    <%= label_tag(:comment, "Komentarz", :class => 'commentLabel')  %>
+                                    <%= text_area_tag(:comment, "", size: "50x10") %>
+                                    <%= hidden_field_tag('book', @book.id) %>
+                                    <%= submit_tag "Oceń", :class => "btn btn-primary bookButton" %> 
+                                </form>
                                 <% end %>
-                                </td></tr>
-                </table>
-                <% if @canReview %>
-                    <div class="markContainer">
-                        <% if @res.returned == true %>
-                            <%= form_tag(controller: "readers", action: "mark") do %>
-                            <form>
-                                <fieldset>
-                                    <span id="stars" class="star-cb-group">
-                                        <input type="radio" id="rating-5" name="review" value="5" /><label for="rating-5">5</label>
-                                        <input type="radio" id="rating-4" name="review" value="4" /><label for="rating-4">4</label>
-                                        <input type="radio" id="rating-3" name="review" value="3" /><label for="rating-3">3</label>
-                                        <input type="radio" id="rating-2" name="review" value="2" /><label for="rating-2">2</label>
-                                        <input type="radio" id="rating-1" name="review" value="1" /><label for="rating-1">1</label>
-                                    </span>
-                                </fieldset>
-                                <%= render 'layouts/messages' %>
-                                <%= label_tag(:comment, "Komentarz", :class => 'commentLabel')  %>
-                                <%= text_area_tag(:comment, "", size: "50x10") %>
-                                <%= hidden_field_tag('book', @book.id) %>
-                                <%= submit_tag "Oceń", :class => "btn btn-primary bookButton" %> 
-                            </form>
                             <% end %>
-                        <% end %>
-                    </div>
-                <% end %>
-        <p><%= link_to 'Powrót', my_borrows_reader_path %></p>
+                        </div>
+                    <% end %>
+            <p><%= link_to 'Powrót', my_borrows_reader_path %></p>
+    </div>
+
 </div>
-
-
 <%= render 'welcome/footer' %>

@@ -1,40 +1,48 @@
 <%= render 'readers/header_2' %> 
-<div class="bookInfo">
-	
-	<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
-	<table>
-		  <tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
-		  <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
-								  <%= writer.name %>
-								  <% end %>
-						 </td></tr>
-		  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
-		  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
-		  <tr><th>Ocena:</th><td>
-                                <% if @book.averageRating.nil? %>
-                                        <p>Brak Ocen.</p>
-                                <% else %>
-                                        <%= @book.averageRating %>
-                                <% end %>
-                                </td></tr>
-	</table>
-	<div class="resForm">
-	  <%= form_tag(controller: "readers", action: "reserved") do %>
-	  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary bookButton" %> 
-	  <% end %>
+
+	<div class="container">
+		<div class="bookInfo">
+			<%= image_tag(@book.image(:medium), :class => 'bookImage') %>
+			<table class="resBorTable">
+				  <tr><th>Tytuł:</th><td><%= @book.title %></td></tr>
+				  <tr><th>Autor:</th><td><% @book.writers.each do |writer| %>
+										  <%= writer.name %>
+										  <% end %>
+								 </td></tr>
+				  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
+				  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
+				  <tr><th>Ocena:</th><td>
+		                                <% if @book.averageRating.nil? %>
+		                                        <p>Brak Ocen.</p>
+		                                <% else %>
+		                                        <%= @book.averageRating %>
+		                                <% end %>
+		                                </td></tr>
+			</table>
+			<div class="resForm">
+			  <%= form_tag(controller: "readers", action: "reserved") do %>
+			  		<%= submit_tag "Zarezerwuj", :class => "btn btn-primary bookButton" %> 
+			  <% end %>
+			</div>
+			<div class='commentTable'>
+				<% if !@reviews.nil? %>
+				<table>
+					<tr><th>Komentarz</th><th>Ocena</th><th>Czytelnik</th></tr>
+					<% @reviews.each do |rev| %>
+						<tr>
+							<td><%= rev.comment %></td>
+							<td><%= rev.score %></td>
+							<td><%= Reader.find(rev.reader_id).name %></td>
+						</tr>
+					<% end %>
+				<% end %>
+				</table>
+			
+			</div>
+
+			<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
+		</div>
 	</div>
-	<% if !@reviews.nil? %>
-		<% @reviews.each do |rev| %>
-			<%= rev.comment %></br>
-			<%= rev.score %></br>
-			<%= Reader.find(rev.reader_id).name %></br>
-		<% end %>
-	<% end %>
-
-
-	<p><%= link_to 'Powrót', searching_reader_path(current_reader), :class => 'backLink' %></p>
-
-
-
+	
 </div>
 <%= render 'welcome/footer' %> 
