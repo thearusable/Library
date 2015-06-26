@@ -9,7 +9,7 @@
 					 </td></tr>
 	  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
 	  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
-	  <tr><th>Ocena:</th><td><%= @average %></td></tr>
+	  <tr><th>Ocena:</th><td><%= @book.averageRating %></td></tr>
 	 </table>
 	
 	<p><%= link_to 'Powrót', root_path, :class => 'backLink' %></p>

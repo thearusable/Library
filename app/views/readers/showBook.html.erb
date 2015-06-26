@@ -10,7 +10,13 @@
 						 </td></tr>
 		  <tr><th>Kategoria:</th><td><%= Category.find(@book.category_id).name %></td></tr>
 		  <tr><th>Opis:</th><td><%= @book.description %></td></tr>
-		  <tr><th>Ocena:</th><td><%= @average %></td></tr>
+		  <tr><th>Ocena:</th><td>
+                                <% if @book.averageRating.nil? %>
+                                        <p>Brak Ocen.</p>
+                                <% else %>
+                                        <%= @book.averageRating %>
+                                <% end %>
+                                </td></tr>
 	</table>
 	<div class="resForm">
 	  <%= form_tag(controller: "readers", action: "reserved") do %>

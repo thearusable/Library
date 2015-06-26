@@ -34,8 +34,8 @@ ActiveAdmin.register Reservation do
           link_to b.title, edit_admin_book_path(b)
         end
       end
-      column "Odebrano?", :received
-      column "Zwrócono?", :returned
+      column "Książka Odebrana?", :received
+      column "Książka Zwrócona?", :returned
       column "Data Odebrania", :receivedDate
       column "Data Zwrócenia", :returnedDate
       column "Rezerwujący" do |r|
@@ -49,10 +49,8 @@ ActiveAdmin.register Reservation do
     #update - do poprawy 
     form :html => { :enctype => "multipart/form-data" } do |f|
       f.inputs "Szczegóły Rezerwacji" do
-      f.input :receivedDate, :as => :datepicker, :label => "Data Odebrania Książki."
-      f.input :received, :label => "Odebrano?"
-      f.input :returnedDate, :as => :datepicker, :label => "Data Zwrócenia Książki."
-      f.input :returned, :label => "Zwrócono?"
+      f.input :received, :label => "Książka została odebrana z biblioteki."
+      f.input :returned, :label => "Książka została zwrócona do biblioteki."
       end
       f.actions
     end

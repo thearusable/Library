@@ -14,7 +14,7 @@
 				<!--Wyświetlanie znalezionych książek-->
 				<div>
 				<table class = "booksTable">
-					<th>Tytuł</th><th>Autor</th><th></th>
+					<th>Tytuł</th><th>Autor</th><th>Średnia Ocen</th><th></th>
 					<% if !@books.nil? %>
 						<% @books.each do |book| %>
 						<% bookID = book.id %>
@@ -24,6 +24,13 @@
 								<% book.writers.each do |writer| %>
 					        	<%= writer.name %>
 					        	<% end %>
+					        </td>
+					        <td>
+					        <% if book.averageRating.nil? %>
+                                        <p>Brak Ocen.</p>
+                                <% else %>
+                                        <%= book.averageRating %>
+                                <% end %>
 					        </td>
 					        <td><%= link_to 'Pokaż',{controller: 'readers', action: 'showBook', id_book: bookID} %></td>
 					    </tr>
