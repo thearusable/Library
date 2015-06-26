@@ -14,3 +14,5 @@
 Library_development
 bin/spring
 Library_test
+.env
+Procfile
