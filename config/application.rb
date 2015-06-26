@@ -29,7 +29,7 @@ module Library
     config.i18n.default_locale = :'pl'
     I18n.locale = :"pl"
 
-    config.paths['app/views'] << "app/views/welcome"
+    config.paths['app/views'] << "app/views/devise"
 
   end
 end
