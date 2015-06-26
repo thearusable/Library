@@ -13,7 +13,7 @@ class PasswordsController < Devise::PasswordsController
       redirect_to login_path
     else
       flash[:alert] = "Nie znaleziono podanego adresu!"
-      redirect_to :back
+      redirect_to forgottenPassword_path
 
     end
   end
