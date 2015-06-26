@@ -7,6 +7,17 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.digest = true
 
+
+ActionMailer::Base.smtp_settings = {
+:address => 'mydomain.com',
+:port => 587,
+:user_name => "myusername",
+:password => "password",
+:authentication => :plain,
+:enable_starttls_auto => true,
+:openssl_verify_mode => 'none' 
+}
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
