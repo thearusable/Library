@@ -7,7 +7,7 @@ ActiveAdmin.setup do |config|
 
   config.current_user_method = :current_librarian
 
-  config.logout_link_path = :destroy_librarian_session_path
+  config.logout_link_path = :root_path
 
   config.batch_actions = true
 

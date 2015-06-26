@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 root 'welcome#index'
 
 #readers
-devise_for :readers ,:controllers => {:passwords => "passwords"}
+devise_for :readers ,:controllers => {:passwords => "passwords", :registrations => "registrations"}
 
 resources :readers
 get 'reader/:id' => 'readers#searching'
