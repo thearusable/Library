@@ -4,8 +4,10 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.serve_static_files = true
-  config.assets.compile = true
+  #config.assets.compile = true
   config.assets.digest = true
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+
 
   config.action_mailer.default_url_options = { :host => 'lib15.heroku.com' }
   Rails.application.routes.default_url_options[:host] = 'lib15.herokuapp.com'
