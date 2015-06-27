@@ -48,6 +48,7 @@ ActiveAdmin.register Book do
       f.inputs "Szczegóły:" do
       f.input :title, :label => "Tytuł"
       f.input :image, :as => :file, :label => "Okładka", :hint => image_tag(f.object.image.url(:medium))
+      f.input :category_id, :as => :select, collection: Category.all
       f.input :publishingHouse, :label => "Wydawnictwo"
       f.input :ISBN, :label => "Numer ISBN"
       f.input :releaseDate, :label => "Data Wydania"

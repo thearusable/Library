@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.6'
 
-gem 'rails', "~> 4.2.1"
+gem 'rails', '4.2.1'
 gem 'sass'
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails'
 gem 'uglifier', '2.7.1'
 gem 'coffee-rails', '4.1.0'
 
@@ -35,7 +35,7 @@ end
 
 gem 'devise' , '3.4.1'
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin'
 gem 'active_skin'
 
 gem "paperclip", "~> 4.2"

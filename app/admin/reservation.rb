@@ -5,7 +5,7 @@ ActiveAdmin.register Reservation do
   permit_params :received, :returned, :receivedDate, :returnedDate
 
 
-  actions :index, :new, :create, :update, :edit, :destroy
+  actions :index, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false

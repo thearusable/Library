@@ -2,7 +2,7 @@ ActiveAdmin.register Librarian do
 
 	menu if: proc{ current_librarian.admin? } #only for admin
 
-  permit_params :name, :email, :admin, :adress, :phone
+  permit_params :name, :email, :admin, :adress, :phone, :password
 
   actions :index, :new, :create, :update, :edit
 

@@ -2,7 +2,7 @@ ActiveAdmin.register Reader do
 
   permit_params :name, :email, :adress, :phone
 
-  actions :index, :new, :create, :update, :edit, :destroy
+  actions :index, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false

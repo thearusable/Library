@@ -4,7 +4,7 @@ ActiveAdmin.register Review do
 
   permit_params :score, :comment, :book_id, :reader_id
 
-  actions :index, :new, :create, :update, :edit, :destroy
+  actions :index, :create, :update, :edit, :destroy
 
   config.per_page = 50
   config.batch_actions = false
