@@ -8,6 +8,8 @@ Rails.application.configure do
   config.assets.digest = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
+  config.assets.precompile += %w[active_admin.css active_admin.js]
+
 
   config.action_mailer.default_url_options = { :host => 'lib15.heroku.com' }
   Rails.application.routes.default_url_options[:host] = 'lib15.herokuapp.com'
