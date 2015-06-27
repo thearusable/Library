@@ -37,7 +37,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  Paperclip::Attachment.default_options[:url] = "/system/:class/:attachment/:style/:filename"
+  Paperclip::Attachment.default_options[:url] = "/system/:attachment/:style/:filename"
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
