@@ -1,0 +1,360 @@
+/* Style strony głównej, nagłówka i stopki*/
+
+html,body{
+	min-height: 800px !important;
+}
+body { 
+	padding: 50px 0;
+	font-family: 'Open Sans', sans-serif;
+	background: #ecf0f1;
+}
+.pageContent {
+	width: 100%;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+.navbar {
+	background: #000;
+	box-shadow: 8px 0 4px #888888;
+	margin-bottom: 0;
+	width: 100%;
+}
+.footer {
+	height: 50px;
+	background: #000;
+	box-shadow: -8px 0 4px #888888;
+	position: fixed;
+	bottom: 1px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+	width:100%;
+}
+.mainPicture {
+	width: 100%;
+	min-height: 580px;
+	background: url("library.jpg") no-repeat;
+	background-size: cover;
+	display: inline-block;
+	margin-top: -50px;
+}
+.mainPicture .welcomeText {
+	font-weight: 700;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.3);
+	width: 500px;
+	padding: 30px;
+	border: 7px solid black;
+	color: #fff;
+	font-size: 23px;
+}
+ul.nav li a.mainLink {
+	text-decoration: none;
+	color: #fff;
+}
+ul.nav li a.mainLink:hover {
+	color: #6090db;
+}
+.footer .text-muted {
+	text-align: center;
+	margin: 8px 0 0 5px;
+}
+#newBooks {
+	margin-top: -5px;
+	background: url("halftone.png");
+	width: 100%;
+}
+.indexSection {
+	background: #000;
+	padding: 5px 0;
+}
+.indexSection h4 {
+	display: block;
+	margin: 0;
+	font-weight: 700;
+	text-align: center;
+	padding: 7px;
+	color: #fff;
+}
+#about {
+	background: url("halftone.png");
+}
+#about .container {
+	margin: 20px auto;
+	text-align: center;
+}
+
+/* Style do komunikatów */
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+/*LOGG*/
+
+.form-horizontal {
+	margin: 0 auto;
+}
+.log .wrapper {
+	width: 20%;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+.log .wrapper h2, .editProfile .wrapper h2{
+  	margin: 50px 0;
+  	display: block;
+  	text-align: center;
+}
+.log .wrapper .links-f a {
+	display: block;
+	padding-left: 25px;
+}
+.log .wrapper .links-f {
+	margin-left: -40px;
+}
+.links a {
+	display: block;
+	padding-left: 25px;
+}
+.links {
+	margin-left: 360px;
+}
+.searchForm {
+	width: 400px;
+	margin: 0 auto;
+	overflow: auto;
+	margin-top: 50px;
+}
+.searchForm input{
+	width: 200px;
+	float: left;
+}
+
+.searchForm input[type="submit"]{
+	width: 100px;
+}
+.container form {
+	margin: 0 auto;
+}
+.container .form-group {
+	padding-left: 25%;
+}
+.form-group .control-label {
+	text-align: left;
+	width: 150px;
+}
+.form-group i {
+	display: inline-block;
+	font-size: 12px;
+}
+.newBooks, .booksTable, .reservations, .borrows {
+	width: 100%;
+	margin: 40px 0;
+}
+.myBorrHeader, .myResHeader {
+	font-weight: 700;
+	margin-top: 30px;
+	text-align: center;
+	width: 100%;
+}
+table tr th {
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	font-weight: bold;
+	padding: 10px 15px 10px 15px; 
+}
+table tr td{
+	 padding:15px;  
+}
+table tr:nth-child(odd){
+	background: rgba(0,0,0,0.1);
+}
+.bookInfo{
+	width: 100%;
+	margin: 150px auto;
+}
+.bookImage {
+	padding-right: 80px;
+	float: left;
+	width: 25%;
+}
+.detailTable {
+	float: left;
+}
+.resBorTable, .bookDetails {
+	width: 75%;
+}
+.bookInfo {
+	margin-top: 150px;
+}
+.bookInfo div {
+	clear: both;
+	
+}
+.resForm {
+	clear: both;
+}
+.resForm .bookButton {
+	margin-top: 80px;
+	float: right;
+}
+.backLink {
+	margin-top: 80px;
+	display: block;
+}
+.bookInfo .fail, .bookInfo .success {
+	text-align: center;
+	display: block;
+	margin-top: 20px;
+}
+.fail {
+	color: #8E130B;
+}
+.success {
+	color: #296E0E;
+}
+.editProfile {
+	width: 100%;
+	margin: 50px auto;
+}
+
+.cancelAcc {
+  /* margin-left: 354px; */
+  width: 438px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  left: 25%;
+  -webkit-transform: translateX(-30%);
+      -ms-transform: translateX(-30%);
+          transform: translateX(-30%);
+  float: none;
+}
+
+
+
+
+
+
+
+
+
+    .star-cb-group {
+        /* remove inline-block whitespace */
+        font-size: 0;
+        /* flip the order so we can use the + and ~ combinators */
+        unicode-bidi: bidi-override;
+        direction: rtl;
+        /* the hidden clearer */
+    }
+    .star-cb-group * {
+        font-size: 1rem;
+    }
+    .star-cb-group > input {
+        display: none;
+    }
+    .star-cb-group > input + label {
+        /* only enough room for the star */
+        display: inline-block;
+        overflow: hidden;
+        text-indent: 9999px;
+        width: 1em;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .star-cb-group > input + label:before {
+        display: inline-block;
+        text-indent: -9999px;
+        content: "☆";
+        color: #888;
+    }
+    .star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+        content: "★";
+        color: #e52;
+        text-shadow: 0 0 1px #333;
+    }
+    .star-cb-group > .star-cb-clear + label {
+        text-indent: -9999px;
+        width: .5em;
+        margin-left: -.5em;
+    }
+    .star-cb-group > .star-cb-clear + label:before {
+        width: .5em;
+    }
+    .star-cb-group:hover > input + label:before {
+        content: "☆";
+        color: #888;
+        text-shadow: none;
+    }
+    .star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+        content: "★";
+        color: #FFE635;
+        text-shadow: 0 0 1px #333;
+    }
+
+    :root {
+        font-size: 2em;
+        font-family: Helvetica, arial, sans-serif;
+    }
+
+
+
+    fieldset {
+        border: 0;
+        width: 300px;
+  		float: left;
+    }
+
+
+
+.markContainer {
+	margin: 20px auto;
+	width: 200px;
+}
+
+.markContainer .star-cb-group {
+	float: right;
+}
+
+.commentTable{
+	padding-top: 50px;
+}
+.commentTable table {
+	clear: both;
+	width: 100%;
+	margin: 0 auto;
+
+}
+
