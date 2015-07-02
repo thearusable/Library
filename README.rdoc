@@ -2,5 +2,5 @@
 
 Projekt zaliczeniowy z przedmiotu "Nowoczesne technologie programistyczne".
 
-Wykonali Arkadiusz Szczepkowicz(thearusable) i Karolina Pawlus(karol77)
+Wykonali Arkadiusz Szczepkowicz(thearusable) i Karolina Pawlus(carol77)
 @2015
